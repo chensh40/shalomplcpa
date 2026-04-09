@@ -47,18 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { sel: '#testimonials .section-tag', key: 'testimonials_tag' },
         { sel: '#testimonials-title', key: 'testimonials_title' },
         { sel: '#testimonials .section-desc', key: 'testimonials_desc' },
-        { sel: '.testimonial-card:nth-child(1) .testimonial-text', key: 'test1_text' },
-        { sel: '.testimonial-card:nth-child(1) .author-name', key: 'test1_name' },
-        { sel: '.testimonial-card:nth-child(1) .author-role', key: 'test1_role' },
-        { sel: '.testimonial-card:nth-child(2) .testimonial-text', key: 'test2_text' },
-        { sel: '.testimonial-card:nth-child(2) .author-name', key: 'test2_name' },
-        { sel: '.testimonial-card:nth-child(2) .author-role', key: 'test2_role' },
-        { sel: '.testimonial-card:nth-child(3) .testimonial-text', key: 'test3_text' },
-        { sel: '.testimonial-card:nth-child(3) .author-name', key: 'test3_name' },
-        { sel: '.testimonial-card:nth-child(3) .author-role', key: 'test3_role' },
-        { sel: '.testimonial-card:nth-child(4) .testimonial-text', key: 'test4_text' },
-        { sel: '.testimonial-card:nth-child(4) .author-name', key: 'test4_name' },
-        { sel: '.testimonial-card:nth-child(4) .author-role', key: 'test4_role' },
+        ...Array.from({ length: 6 }, (_, i) => [
+            { sel: `.testimonial-card:nth-child(${i + 1}) .testimonial-text`, key: `test${i + 1}_text` },
+            { sel: `.testimonial-card:nth-child(${i + 1}) .author-name`, key: `test${i + 1}_name` }
+        ]).flat(),
         // FAQ
         { sel: '#faq .section-tag', key: 'faq_tag' },
         { sel: '#faq-title', key: 'faq_title' },
