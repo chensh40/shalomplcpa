@@ -482,43 +482,70 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector('.slider-next');
     const dotsContainer = document.getElementById('sliderDots');
     let currentSlide = 0;
-    const totalSlides = cards.length;
     let autoplayInterval;
 
-    // יצירת נקודות
-    cards.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = `slider-dot${i === 0 ? ' active' : ''}`;
-        dot.setAttribute('aria-label', `המלצה ${i + 1}`);
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
+    // עטיפת תוכן כל כרטיסייה ב-inner div
+    cards.forEach(card => {
+        if (!card.querySelector('.testimonial-card-inner')) {
+            const inner = document.createElement('div');
+            inner.className = 'testimonial-card-inner';
+            while (card.firstChild) {
+                inner.appendChild(card.firstChild);
+            }
+            card.appendChild(inner);
+        }
     });
 
-    const dots = document.querySelectorAll('.slider-dot');
+    // חישוב כמה כרטיסיות מוצגות (2 בדסקטופ, 1 במובייל)
+    const getPerView = () => window.innerWidth > 768 ? 2 : 1;
+    const getTotalPages = () => Math.ceil(cards.length / getPerView());
+
+    // יצירת נקודות
+    const buildDots = () => {
+        dotsContainer.innerHTML = '';
+        const totalPages = getTotalPages();
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('button');
+            dot.className = `slider-dot${i === 0 ? ' active' : ''}`;
+            dot.setAttribute('aria-label', `עמוד ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    };
+    buildDots();
 
     const goToSlide = (index) => {
-        currentSlide = index;
-        // בגלל RTL, הכיוון הפוך
-        track.style.transform = `translateX(${currentSlide * 100}%)`;
-        dots.forEach((dot, i) => {
+        const totalPages = getTotalPages();
+        const perView = getPerView();
+        currentSlide = Math.max(0, Math.min(index, totalPages - 1));
+        const movePercent = currentSlide * (100 / perView) * perView;
+        // RTL - כיוון חיובי
+        track.style.transform = `translateX(${movePercent}%)`;
+        document.querySelectorAll('.slider-dot').forEach((dot, i) => {
             dot.classList.toggle('active', i === currentSlide);
         });
     };
 
     prevBtn.addEventListener('click', () => {
-        goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+        goToSlide((currentSlide - 1 + getTotalPages()) % getTotalPages());
         resetAutoplay();
     });
 
     nextBtn.addEventListener('click', () => {
-        goToSlide((currentSlide + 1) % totalSlides);
+        goToSlide((currentSlide + 1) % getTotalPages());
         resetAutoplay();
+    });
+
+    // עדכון בשינוי גודל מסך
+    window.addEventListener('resize', () => {
+        buildDots();
+        goToSlide(Math.min(currentSlide, getTotalPages() - 1));
     });
 
     // Autoplay
     const startAutoplay = () => {
         autoplayInterval = setInterval(() => {
-            goToSlide((currentSlide + 1) % totalSlides);
+            goToSlide((currentSlide + 1) % getTotalPages());
         }, 5000);
     };
 

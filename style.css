@@ -1267,11 +1267,12 @@ button {
 .testimonials-slider {
     position: relative;
     overflow: hidden;
+    padding: 0 var(--space-md);
 }
 
 .testimonials-track {
     display: flex;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .testimonial-card {
@@ -1321,10 +1322,28 @@ button {
 
 /* Testimonial Cards - Google Style */
 .testimonial-card {
-    flex: 0 0 100%;
-    max-width: 650px;
-    margin: 0 auto;
-    padding: var(--space-2xl);
+    flex: 0 0 50%;
+    padding: var(--space-lg);
+    box-sizing: border-box;
+}
+
+.testimonial-card-inner {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    height: 100%;
+    transition: box-shadow var(--transition-base);
+}
+
+.testimonial-card-inner:hover {
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 100%;
+    }
 }
 
 .testimonial-header {
