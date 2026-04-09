@@ -179,66 +179,42 @@
                 </div>
                 <div class="hero-visual animate-on-scroll">
                     <div class="hero-graphic">
-                        <!-- אנימציית לוגו - נקודות מתחברות ליצירת הלוגו -->
+                        <!-- אלמנט גרפי SVG - קו דינמי שנע בין נקודות -->
                         <svg viewBox="0 0 500 500" class="hero-svg" id="heroSvg" aria-hidden="true">
                             <defs>
+                                <linearGradient id="heroGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:var(--color-accent);stop-opacity:0.3"/>
+                                    <stop offset="100%" style="stop-color:var(--color-primary);stop-opacity:0.1"/>
+                                </linearGradient>
+                                <linearGradient id="heroGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:var(--color-accent);stop-opacity:0.8"/>
+                                    <stop offset="100%" style="stop-color:var(--color-accent);stop-opacity:0.3"/>
+                                </linearGradient>
                                 <filter id="glow">
-                                    <feGaussianBlur stdDeviation="3" result="blur"/>
-                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                                </filter>
-                                <filter id="bigGlow">
-                                    <feGaussianBlur stdDeviation="12" result="blur"/>
-                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
                                 </filter>
                             </defs>
-
-                            <!-- === נקודות העיגול+חץ (path A) === -->
-                            <g id="arcDots" opacity="0">
-                                <circle cx="310" cy="395" r="3" fill="#c8a45e" opacity="0.3"/>
-                                <circle cx="370" cy="355" r="3" fill="#c8a45e" opacity="0.3"/>
-                                <circle cx="400" cy="290" r="3" fill="#c8a45e" opacity="0.3"/>
-                                <circle cx="395" cy="210" r="3" fill="#c8a45e" opacity="0.3"/>
-                                <circle cx="360" cy="145" r="3" fill="#c8a45e" opacity="0.3"/>
-                                <circle cx="300" cy="105" r="3" fill="#c8a45e" opacity="0.3"/>
-                                <circle cx="230" cy="100" r="3" fill="#c8a45e" opacity="0.3"/>
-                                <circle cx="170" cy="125" r="3" fill="#c8a45e" opacity="0.3"/>
-                                <!-- חץ -->
-                                <circle cx="135" cy="100" r="3" fill="#c8a45e" opacity="0.3"/>
-                                <circle cx="150" cy="70" r="3" fill="#c8a45e" opacity="0.3"/>
-                            </g>
-
-                            <!-- === נקודות ה-S (path B) === -->
-                            <g id="sDots" opacity="0">
-                                <circle cx="290" cy="175" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="270" cy="165" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="235" cy="170" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="215" cy="190" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="220" cy="215" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="245" cy="240" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="275" cy="265" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="285" cy="295" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="270" cy="320" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="240" cy="335" r="3" fill="#5a6a7a" opacity="0.3"/>
-                                <circle cx="210" cy="325" r="3" fill="#5a6a7a" opacity="0.3"/>
-                            </g>
-
-                            <!-- === קו העיגול+חץ === -->
-                            <polyline id="arcLine" fill="none" stroke="#c8a45e" stroke-width="6"
-                                stroke-linecap="round" stroke-linejoin="round" opacity="0" points=""/>
-
-                            <!-- === קו ה-S === -->
-                            <path id="sLine" fill="none" stroke="#5a6a7a" stroke-width="6"
-                                stroke-linecap="round" stroke-linejoin="round" opacity="0"
-                                d=""/>
-
-                            <!-- נקודות זוהרות נעות -->
-                            <circle id="glowA" cx="0" cy="0" r="5" fill="#c8a45e" filter="url(#glow)" opacity="0"/>
-                            <circle id="glowB" cx="0" cy="0" r="5" fill="#5a6a7a" filter="url(#glow)" opacity="0"/>
-
-                            <!-- הילת זוהר סופית -->
-                            <circle id="finalGlow" cx="250" cy="250" r="200"
-                                fill="none" stroke="#c8a45e" stroke-width="2"
-                                filter="url(#bigGlow)" opacity="0"/>
+                            <!-- עיגולי רקע -->
+                            <circle cx="250" cy="250" r="200" fill="url(#heroGrad1)" class="hero-circle-1"/>
+                            <circle cx="250" cy="250" r="150" fill="none" stroke="var(--color-accent)" stroke-width="0.5" stroke-dasharray="10 5" class="hero-circle-2"/>
+                            <circle cx="250" cy="250" r="100" fill="none" stroke="var(--color-accent)" stroke-width="0.3" stroke-dasharray="5 10" class="hero-circle-3"/>
+                            <!-- קו שכבר צויר - Trail -->
+                            <polyline id="heroTrail" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.2" points=""/>
+                            <!-- קו דינמי שנע בין הנקודות -->
+                            <line id="heroLine" x1="0" y1="0" x2="0" y2="0" stroke="url(#heroGrad2)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+                            <!-- נקודות נתונים -->
+                            <circle cx="150" cy="350" r="5" fill="var(--color-accent)" class="hero-node" data-index="0" opacity="0.3"/>
+                            <circle cx="200" cy="280" r="5" fill="var(--color-accent)" class="hero-node" data-index="1" opacity="0.3"/>
+                            <circle cx="250" cy="150" r="5" fill="var(--color-accent)" class="hero-node" data-index="2" opacity="0.3"/>
+                            <circle cx="350" cy="180" r="5" fill="var(--color-accent)" class="hero-node" data-index="3" opacity="0.3"/>
+                            <circle cx="380" cy="300" r="5" fill="var(--color-accent)" class="hero-node" data-index="4" opacity="0.3"/>
+                            <circle cx="300" cy="370" r="5" fill="var(--color-accent)" class="hero-node" data-index="5" opacity="0.3"/>
+                            <!-- נקודה נעה זוהרת -->
+                            <circle id="heroGlow" cx="0" cy="0" r="8" fill="var(--color-accent)" filter="url(#glow)" opacity="0"/>
                         </svg>
                     </div>
                 </div>
@@ -641,165 +617,167 @@
                     </div>
                 </div>
 
-                <div class="testimonials-slider" id="testimonialsSlider">
-                    <div class="testimonials-track">
-                        <!-- ביקורת 1 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <div class="author-avatar" style="background: #1a73e8;" aria-hidden="true">
-                                    <span>י</span>
-                                </div>
-                                <div class="author-info">
-                                    <div class="author-name">יוסי אזולאי</div>
-                                    <div class="review-meta">
-                                        <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                <div class="testimonials-columns">
+                    <!-- עמודה 1 - ביקורות 1+4 (גוללת למעלה) -->
+                    <div class="testimonials-column">
+                        <div class="testimonials-column-track" data-duration="20">
+                            <!-- ביקורת 1 -->
+                            <div class="testimonial-card" data-test="1">
+                                <div class="testimonial-header">
+                                    <div class="author-avatar" style="background: #1a73e8;" aria-hidden="true">
+                                        <span>י</span>
+                                    </div>
+                                    <div class="author-info">
+                                        <div class="author-name">יוסי אזולאי</div>
+                                        <div class="review-meta">
+                                            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                            </div>
+                                            <span class="review-date">לפני 3 חודשים</span>
                                         </div>
-                                        <span class="review-date">לפני 3 חודשים</span>
                                     </div>
                                 </div>
+                                <blockquote class="testimonial-text">
+                                    "עובדים איתם כבר 12 שנה עם העסק. שלום ולינה תמיד זמינים, עונים לטלפון גם בערב כשיש משהו דחוף. עשו לנו תכנון מס שחסך לנו המון כסף השנה. אנשים ישרים ומקצועיים, ממליץ לכל בעל עסק באזור חיפה."
+                                </blockquote>
                             </div>
-                            <blockquote class="testimonial-text">
-                                "עובדים איתם כבר 12 שנה עם העסק. שלום ולינה תמיד זמינים, עונים לטלפון גם בערב כשיש משהו דחוף. עשו לנו תכנון מס שחסך לנו המון כסף השנה. אנשים ישרים ומקצועיים, ממליץ לכל בעל עסק באזור חיפה."
-                            </blockquote>
-                        </div>
-                        <!-- ביקורת 2 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <div class="author-avatar" style="background: #e91e63;" aria-hidden="true">
-                                    <span>ס</span>
-                                </div>
-                                <div class="author-info">
-                                    <div class="author-name">סיגל מזרחי</div>
-                                    <div class="review-meta">
-                                        <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                            <!-- ביקורת 4 -->
+                            <div class="testimonial-card" data-test="4">
+                                <div class="testimonial-header">
+                                    <div class="author-avatar" style="background: #ff9800;" aria-hidden="true">
+                                        <span>ר</span>
+                                    </div>
+                                    <div class="author-info">
+                                        <div class="author-name">רינת גולדשטיין</div>
+                                        <div class="review-meta">
+                                            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                            </div>
+                                            <span class="review-date">לפני חודש</span>
                                         </div>
-                                        <span class="review-date">לפני 5 חודשים</span>
                                     </div>
                                 </div>
+                                <blockquote class="testimonial-text">
+                                    "עברתי אליהם מרו\"ח אחר אחרי שחברה המליצה, ואני מתחרטת שלא עשיתי את זה קודם. הדוח השנתי שלי היה מוכן בזמן, קיבלתי החזר מס גדול יותר ממה שקיבלתי אי פעם. צוות נחמד, סבלני, ומסביר הכל בגובה העיניים."
+                                </blockquote>
                             </div>
-                            <blockquote class="testimonial-text">
-                                "פתחתי עסק חדש ולא הבנתי בכלום. הגעתי אליהם בהמלצה של חברה. מהרגע הראשון הרגשתי שאני בידיים טובות. עזרו לי עם כל הניירת, פתיחת תיקים במס הכנסה ובמע\"מ, והיום הם מטפלים לי בהכל. מרוצה מאוד!"
-                            </blockquote>
-                        </div>
-                        <!-- ביקורת 3 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <div class="author-avatar" style="background: #4caf50;" aria-hidden="true">
-                                    <span>מ</span>
-                                </div>
-                                <div class="author-info">
-                                    <div class="author-name">מוחמד חלבי</div>
-                                    <div class="review-meta">
-                                        <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                        </div>
-                                        <span class="review-date">לפני 7 חודשים</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <blockquote class="testimonial-text">
-                                "משרד מקצועי ואמין. יש לי שתי חברות והם מנהלים את הכל ברמה גבוהה. מה שאני הכי מעריך זה שהם יוזמים ומעדכנים אותי על שינויים בחוק שרלוונטיים לעסק שלי, לא מחכים שאני אשאל. השירות פשוט ברמה אחרת."
-                            </blockquote>
-                        </div>
-                        <!-- ביקורת 4 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <div class="author-avatar" style="background: #ff9800;" aria-hidden="true">
-                                    <span>ר</span>
-                                </div>
-                                <div class="author-info">
-                                    <div class="author-name">רינת גולדשטיין</div>
-                                    <div class="review-meta">
-                                        <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                        </div>
-                                        <span class="review-date">לפני חודש</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <blockquote class="testimonial-text">
-                                "עברתי אליהם מרו\"ח אחר אחרי שחברה המליצה, ואני מתחרטת שלא עשיתי את זה קודם. הדוח השנתי שלי היה מוכן בזמן, קיבלתי החזר מס גדול יותר ממה שקיבלתי אי פעם. צוות נחמד, סבלני, ומסביר הכל בגובה העיניים. 👏"
-                            </blockquote>
-                        </div>
-                        <!-- ביקורת 5 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <div class="author-avatar" style="background: #9c27b0;" aria-hidden="true">
-                                    <span>א</span>
-                                </div>
-                                <div class="author-info">
-                                    <div class="author-name">אלכס ברקוביץ'</div>
-                                    <div class="review-meta">
-                                        <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                        </div>
-                                        <span class="review-date">לפני שנה</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <blockquote class="testimonial-text">
-                                "עליתי מרוסיה לפני 4 שנים ולא ידעתי בכלל איך המערכת עובדת פה. הם הסבירו הכל בסבלנות, עזרו לי עם כל ההטבות שמגיעות לעולה חדש. עד היום כל שאלה שיש לי הם עונים תוך שעות. ממליצים בחום, גם מדברים רוסית במשרד."
-                            </blockquote>
-                        </div>
-                        <!-- ביקורת 6 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-header">
-                                <div class="author-avatar" style="background: #00bcd4;" aria-hidden="true">
-                                    <span>ע</span>
-                                </div>
-                                <div class="author-info">
-                                    <div class="author-name">עדי פרידמן</div>
-                                    <div class="review-meta">
-                                        <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                            <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
-                                        </div>
-                                        <span class="review-date">לפני 2 חודשים</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <blockquote class="testimonial-text">
-                                "הגשתי דוח שנתי דרכם בפעם הראשונה וקיבלתי החזר של כמעט 8,000 ש\"ח!! ברו\"ח הקודם שלי לא קיבלתי אפילו חצי מזה. הם בדקו הכל לעומק, מצאו זיכויים שלא ידעתי שמגיעים לי. שווה כל שקל."
-                            </blockquote>
                         </div>
                     </div>
-                    <div class="slider-controls">
-                        <button class="slider-btn slider-prev" aria-label="המלצה קודמת">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 18l6-6-6-6"/>
-                            </svg>
-                        </button>
-                        <div class="slider-dots" id="sliderDots"></div>
-                        <button class="slider-btn slider-next" aria-label="המלצה הבאה">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M15 18l-6-6 6-6"/>
-                            </svg>
-                        </button>
+
+                    <!-- עמודה 2 - ביקורות 2+5 (גוללת למעלה, מהירות שונה) -->
+                    <div class="testimonials-column testimonials-column--desktop">
+                        <div class="testimonials-column-track" data-duration="25">
+                            <!-- ביקורת 2 -->
+                            <div class="testimonial-card" data-test="2">
+                                <div class="testimonial-header">
+                                    <div class="author-avatar" style="background: #e91e63;" aria-hidden="true">
+                                        <span>ס</span>
+                                    </div>
+                                    <div class="author-info">
+                                        <div class="author-name">סיגל מזרחי</div>
+                                        <div class="review-meta">
+                                            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                            </div>
+                                            <span class="review-date">לפני 5 חודשים</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <blockquote class="testimonial-text">
+                                    "פתחתי עסק חדש ולא הבנתי בכלום. הגעתי אליהם בהמלצה של חברה. מהרגע הראשון הרגשתי שאני בידיים טובות. עזרו לי עם כל הניירת, פתיחת תיקים במס הכנסה ובמע\"מ, והיום הם מטפלים לי בהכל. מרוצה מאוד!"
+                                </blockquote>
+                            </div>
+                            <!-- ביקורת 5 -->
+                            <div class="testimonial-card" data-test="5">
+                                <div class="testimonial-header">
+                                    <div class="author-avatar" style="background: #9c27b0;" aria-hidden="true">
+                                        <span>א</span>
+                                    </div>
+                                    <div class="author-info">
+                                        <div class="author-name">אלכס ברקוביץ'</div>
+                                        <div class="review-meta">
+                                            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                            </div>
+                                            <span class="review-date">לפני שנה</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <blockquote class="testimonial-text">
+                                    "עליתי מרוסיה לפני 4 שנים ולא ידעתי בכלל איך המערכת עובדת פה. הם הסבירו הכל בסבלנות, עזרו לי עם כל ההטבות שמגיעות לעולה חדש. עד היום כל שאלה שיש לי הם עונים תוך שעות. ממליצים בחום, גם מדברים רוסית במשרד."
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- עמודה 3 - ביקורות 3+6 (גוללת למעלה, מהירות שונה) -->
+                    <div class="testimonials-column testimonials-column--wide">
+                        <div class="testimonials-column-track" data-duration="22">
+                            <!-- ביקורת 3 -->
+                            <div class="testimonial-card" data-test="3">
+                                <div class="testimonial-header">
+                                    <div class="author-avatar" style="background: #4caf50;" aria-hidden="true">
+                                        <span>מ</span>
+                                    </div>
+                                    <div class="author-info">
+                                        <div class="author-name">מוחמד חלבי</div>
+                                        <div class="review-meta">
+                                            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                            </div>
+                                            <span class="review-date">לפני 7 חודשים</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <blockquote class="testimonial-text">
+                                    "משרד מקצועי ואמין. יש לי שתי חברות והם מנהלים את הכל ברמה גבוהה. מה שאני הכי מעריך זה שהם יוזמים ומעדכנים אותי על שינויים בחוק שרלוונטיים לעסק שלי, לא מחכים שאני אשאל. השירות פשוט ברמה אחרת."
+                                </blockquote>
+                            </div>
+                            <!-- ביקורת 6 -->
+                            <div class="testimonial-card" data-test="6">
+                                <div class="testimonial-header">
+                                    <div class="author-avatar" style="background: #00bcd4;" aria-hidden="true">
+                                        <span>ע</span>
+                                    </div>
+                                    <div class="author-info">
+                                        <div class="author-name">עדי פרידמן</div>
+                                        <div class="review-meta">
+                                            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                                <svg viewBox="0 0 20 20" width="14" height="14"><path d="M10 1l2.5 5.5H18l-4.5 3.5 1.5 5.5L10 13l-5 2.5 1.5-5.5L2 6.5h5.5z" fill="#FBBC05"/></svg>
+                                            </div>
+                                            <span class="review-date">לפני 2 חודשים</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <blockquote class="testimonial-text">
+                                    "הגשתי דוח שנתי דרכם בפעם הראשונה וקיבלתי החזר של כמעט 8,000 ש\"ח!! ברו\"ח הקודם שלי לא קיבלתי אפילו חצי מזה. הם בדקו הכל לעומק, מצאו זיכויים שלא ידעתי שמגיעים לי. שווה כל שקל."
+                                </blockquote>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1032,7 +1010,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#hero" class="logo footer-logo" aria-label="חזרה לראש העמוד">
-                        <img src="assets/images/logo.png" alt="שלום פרץ ולינה רואי חשבון" class="logo-img footer-logo-img">
+                        <img src="assets/images/logo2.png" alt="שלום פרץ ולינה רואי חשבון" class="logo-img footer-logo-img">
                     </a>
                     <p class="footer-desc">משרד רואי חשבון מוביל בחיפה, מספק ליווי מקצועי ואישי לעסקים ויחידים מאז 1993.</p>
                     <div class="footer-social">
