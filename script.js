@@ -225,104 +225,147 @@ document.addEventListener('DOMContentLoaded', () => {
         preloader.classList.add('hidden');
     }, 3000);
 
-    // ===== אנימציית Hero - קו נע בין נקודות =====
-    const heroNodes = document.querySelectorAll('.hero-node');
-    const heroLine = document.getElementById('heroLine');
+    // ===== אנימציית Hero - ציור הלוגו + Arc Reactor =====
+    const logoCircle = document.getElementById('logoCircle');
+    const logoArrow = document.getElementById('logoArrow');
+    const logoS = document.getElementById('logoS');
     const heroGlow = document.getElementById('heroGlow');
-    const heroTrail = document.getElementById('heroTrail');
+    const arcPulse1 = document.getElementById('arcPulse1');
+    const arcPulse2 = document.getElementById('arcPulse2');
+    const arcPulse3 = document.getElementById('arcPulse3');
 
-    if (heroNodes.length > 0 && heroLine && heroGlow && heroTrail) {
-        // נקודות הנתונים
-        const points = Array.from(heroNodes).map(node => ({
-            x: parseFloat(node.getAttribute('cx')),
-            y: parseFloat(node.getAttribute('cy')),
-            el: node
-        }));
-
-        let currentIndex = 0;
+    if (logoCircle && heroGlow) {
+        // היקף העיגול (2*PI*r = 2*PI*150 ≈ 942)
+        const circleLength = 942;
+        const arrowLength = 120;
+        let phase = 0; // 0=wait, 1=circle, 2=arrow, 3=S, 4=arc-reactor, 5=pulse-loop
         let progress = 0;
-        const speed = 0.012; // מהירות התנועה
-        let trailPoints = []; // נקודות שכבר חוברו
+        let arcReactorTime = 0;
+
+        // נקודה על מסלול העיגול (מתחילים מלמטה, נגד כיוון השעון)
+        const pointOnCircle = (t) => {
+            const angle = Math.PI / 2 + t * Math.PI * 2; // מתחיל מלמטה
+            return {
+                x: 250 + 150 * Math.cos(angle),
+                y: 250 + 150 * Math.sin(angle)
+            };
+        };
+
+        const easeInOut = (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
         const animate = () => {
-            const from = points[currentIndex];
-            const toIndex = (currentIndex + 1) % points.length;
-            const to = points[toIndex];
+            // שלב 1: ציור העיגול
+            if (phase === 1) {
+                progress += 0.004;
+                const eased = easeInOut(Math.min(progress, 1));
 
-            progress += speed;
+                // ציור העיגול בהדרגה
+                logoCircle.setAttribute('opacity', '1');
+                logoCircle.setAttribute('stroke-dashoffset', circleLength * (1 - eased));
 
-            if (progress >= 1) {
-                // הגענו לנקודה הבאה
-                progress = 0;
+                // נקודה זוהרת נעה לאורך העיגול
+                const pos = pointOnCircle(eased);
+                heroGlow.setAttribute('cx', pos.x);
+                heroGlow.setAttribute('cy', pos.y);
+                heroGlow.setAttribute('opacity', '0.8');
 
-                // הנקודה שהגענו אליה זוהרת
-                to.el.setAttribute('opacity', '1');
-                to.el.setAttribute('r', '7');
-                setTimeout(() => {
-                    to.el.setAttribute('r', '5');
-                    to.el.setAttribute('opacity', '0.6');
-                }, 600);
-
-                // הוספת הנקודה ל-trail
-                trailPoints.push(`${to.x},${to.y}`);
-
-                currentIndex = toIndex;
-
-                // אם חזרנו להתחלה, מתחילים trail חדש עם fade
-                if (currentIndex === 0) {
-                    setTimeout(() => {
-                        heroTrail.style.transition = 'opacity 1s';
-                        heroTrail.setAttribute('opacity', '0');
-                        setTimeout(() => {
-                            trailPoints = [];
-                            heroTrail.setAttribute('points', '');
-                            heroTrail.setAttribute('opacity', '0.2');
-                            heroTrail.style.transition = '';
-                        }, 1000);
-                    }, 300);
-                }
-
-                // עדכון ה-trail
-                if (trailPoints.length >= 2) {
-                    heroTrail.setAttribute('points', trailPoints.join(' '));
+                if (progress >= 1) {
+                    progress = 0;
+                    phase = 2;
+                    heroGlow.setAttribute('opacity', '0');
                 }
             }
 
-            // חישוב מיקום ביניים עם easing
-            const eased = progress < 0.5
-                ? 2 * progress * progress
-                : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+            // שלב 2: ציור החץ
+            else if (phase === 2) {
+                progress += 0.015;
+                const eased = easeInOut(Math.min(progress, 1));
 
-            const cx = from.x + (to.x - from.x) * eased;
-            const cy = from.y + (to.y - from.y) * eased;
+                logoArrow.setAttribute('opacity', '1');
+                logoArrow.setAttribute('stroke-dashoffset', arrowLength * (1 - eased));
 
-            // עדכון הקו
-            heroLine.setAttribute('x1', from.x);
-            heroLine.setAttribute('y1', from.y);
-            heroLine.setAttribute('x2', cx);
-            heroLine.setAttribute('y2', cy);
-            heroLine.setAttribute('opacity', '1');
+                if (progress >= 1) {
+                    progress = 0;
+                    phase = 3;
+                }
+            }
 
-            // עדכון נקודה זוהרת
-            heroGlow.setAttribute('cx', cx);
-            heroGlow.setAttribute('cy', cy);
-            heroGlow.setAttribute('opacity', 0.4 + Math.sin(progress * Math.PI) * 0.6);
+            // שלב 3: הופעת ה-S
+            else if (phase === 3) {
+                progress += 0.02;
+                const eased = easeInOut(Math.min(progress, 1));
+
+                logoS.setAttribute('opacity', eased);
+
+                if (progress >= 1) {
+                    progress = 0;
+                    phase = 4;
+                }
+            }
+
+            // שלב 4: Arc Reactor - פולס זוהר
+            else if (phase === 4) {
+                progress += 0.008;
+
+                // הבזק חזק
+                const flash = Math.min(progress * 3, 1);
+                const flashEased = easeInOut(flash);
+
+                // העיגול זוהר בחזקה
+                logoCircle.setAttribute('stroke-width', 8 + flashEased * 6);
+                logoCircle.setAttribute('filter', flash < 1 ? 'url(#arcGlow)' : '');
+
+                // ה-S זוהר
+                logoS.setAttribute('fill', flash < 0.5 ? '#c8a45e' : '#5a6a7a');
+
+                // פולסים החוצה
+                arcPulse1.setAttribute('opacity', flashEased * 0.4);
+                arcPulse2.setAttribute('opacity', flashEased * 0.2);
+                arcPulse3.setAttribute('opacity', flashEased * 0.3);
+
+                // התפשטות הפולסים
+                arcPulse2.setAttribute('r', 170 + flashEased * 30);
+                arcPulse3.setAttribute('r', 130 - flashEased * 20);
+
+                if (progress >= 1) {
+                    // חזרה למצב יציב עם זוהר עדין
+                    logoCircle.setAttribute('stroke-width', '8');
+                    logoCircle.setAttribute('filter', '');
+                    logoS.setAttribute('fill', '#5a6a7a');
+                    phase = 5;
+                    progress = 0;
+                }
+            }
+
+            // שלב 5: פולס עדין חוזר (נשימה)
+            else if (phase === 5) {
+                arcReactorTime += 0.015;
+                const breath = (Math.sin(arcReactorTime) + 1) / 2; // 0-1
+
+                arcPulse1.setAttribute('opacity', 0.08 + breath * 0.15);
+                arcPulse2.setAttribute('opacity', 0.03 + breath * 0.08);
+                arcPulse2.setAttribute('r', 170 + breath * 10);
+                arcPulse3.setAttribute('opacity', 0.05 + breath * 0.1);
+                arcPulse3.setAttribute('r', 130 - breath * 5);
+
+                // זוהר עדין על העיגול
+                logoCircle.setAttribute('stroke-width', 8 + breath * 1.5);
+            }
 
             requestAnimationFrame(animate);
         };
 
-        // התחלה - הנקודה הראשונה פעילה
-        points[0].el.setAttribute('opacity', '1');
-        points[0].el.setAttribute('r', '7');
-        trailPoints.push(`${points[0].x},${points[0].y}`);
-
-        setTimeout(() => {
-            points[0].el.setAttribute('r', '5');
-            points[0].el.setAttribute('opacity', '0.6');
-        }, 600);
-
         // התחלת האנימציה אחרי שה-preloader נעלם
-        setTimeout(() => requestAnimationFrame(animate), 1500);
+        setTimeout(() => {
+            // הצגת הנקודה הזוהרת בנקודת ההתחלה (תחתית העיגול)
+            const startPos = pointOnCircle(0);
+            heroGlow.setAttribute('cx', startPos.x);
+            heroGlow.setAttribute('cy', startPos.y);
+            heroGlow.setAttribute('opacity', '0.8');
+
+            phase = 1;
+            requestAnimationFrame(animate);
+        }, 1500);
     }
 
     // ===== Header Scroll Effect =====

@@ -862,17 +862,9 @@ button {
     transform-origin: center;
 }
 
-.hero-node {
-    transition: opacity 0.4s ease, r 0.4s ease;
-}
-
 @keyframes pulse-slow {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.02); }
-}
-
-@keyframes rotate-slow {
-    to { transform: rotate(360deg); }
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.02); }
 }
 
 /* Hero Wave */
