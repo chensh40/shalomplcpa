@@ -225,144 +225,225 @@ document.addEventListener('DOMContentLoaded', () => {
         preloader.classList.add('hidden');
     }, 3000);
 
-    // ===== אנימציית Hero - ציור הלוגו + Arc Reactor =====
-    const logoCircle = document.getElementById('logoCircle');
-    const logoArrow = document.getElementById('logoArrow');
-    const logoS = document.getElementById('logoS');
-    const heroGlow = document.getElementById('heroGlow');
-    const arcPulse1 = document.getElementById('arcPulse1');
-    const arcPulse2 = document.getElementById('arcPulse2');
-    const arcPulse3 = document.getElementById('arcPulse3');
+    // ===== אנימציית Hero - שני קווים מציירים את הלוגו בו-זמנית =====
+    const heroSvg = document.getElementById('heroSvg');
 
-    if (logoCircle && heroGlow) {
-        // היקף העיגול (2*PI*r = 2*PI*150 ≈ 942)
-        const circleLength = 942;
-        const arrowLength = 120;
-        let phase = 0; // 0=wait, 1=circle, 2=arrow, 3=S, 4=arc-reactor, 5=pulse-loop
+    if (heroSvg) {
+        // נקודות מסלול A - העיגול + חץ (זהוב)
+        const arcPoints = [
+            [310,395],[370,355],[400,290],[395,210],
+            [360,145],[300,105],[230,100],[170,125],
+            [135,100],[150,70]
+        ];
+
+        // נקודות מסלול B - האות S (אפור)
+        const sPoints = [
+            [290,175],[270,165],[235,170],[215,190],
+            [220,215],[245,240],[275,265],[285,295],
+            [270,320],[240,335],[210,325]
+        ];
+
+        const arcDotsG = document.getElementById('arcDots');
+        const sDotsG = document.getElementById('sDots');
+        const arcLine = document.getElementById('arcLine');
+        const sLine = document.getElementById('sLine');
+        const glowA = document.getElementById('glowA');
+        const glowB = document.getElementById('glowB');
+        const finalGlow = document.getElementById('finalGlow');
+
+        const arcDotEls = arcDotsG.querySelectorAll('circle');
+        const sDotEls = sDotsG.querySelectorAll('circle');
+
+        // שלבים: 0=ממתין, 1=הצגת נקודות, 2=ציור קווים, 3=בום!, 4=נשימה
+        let phase = 0;
         let progress = 0;
-        let arcReactorTime = 0;
-
-        // נקודה על מסלול העיגול (מתחילים מלמטה, נגד כיוון השעון)
-        const pointOnCircle = (t) => {
-            const angle = Math.PI / 2 + t * Math.PI * 2; // מתחיל מלמטה
-            return {
-                x: 250 + 150 * Math.cos(angle),
-                y: 250 + 150 * Math.sin(angle)
-            };
-        };
+        let breathTime = 0;
 
         const easeInOut = (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
+        // חישוב נקודה על מסלול בין נקודות לפי progress (0-1)
+        const getPointOnPath = (points, t) => {
+            const totalSegs = points.length - 1;
+            const seg = Math.min(Math.floor(t * totalSegs), totalSegs - 1);
+            const segT = (t * totalSegs) - seg;
+            const p1 = points[seg];
+            const p2 = points[seg + 1];
+            return {
+                x: p1[0] + (p2[0] - p1[0]) * segT,
+                y: p1[1] + (p2[1] - p1[1]) * segT
+            };
+        };
+
+        // בניית polyline string עד progress מסוים
+        const buildPolyline = (points, t) => {
+            const totalSegs = points.length - 1;
+            const endSeg = t * totalSegs;
+            let result = [];
+            for (let i = 0; i <= Math.min(Math.floor(endSeg), totalSegs); i++) {
+                result.push(`${points[i][0]},${points[i][1]}`);
+            }
+            // נקודה אחרונה חלקית
+            if (endSeg % 1 !== 0 && Math.floor(endSeg) < totalSegs) {
+                const seg = Math.floor(endSeg);
+                const segT = endSeg - seg;
+                const px = points[seg][0] + (points[seg+1][0] - points[seg][0]) * segT;
+                const py = points[seg][1] + (points[seg+1][1] - points[seg][1]) * segT;
+                result.push(`${px},${py}`);
+            }
+            return result.join(' ');
+        };
+
+        // בניית path string חלק (cubic bezier) עד progress מסוים
+        const buildSmoothPath = (points, t) => {
+            const totalSegs = points.length - 1;
+            const endIdx = Math.min(Math.floor(t * totalSegs) + 1, points.length - 1);
+            if (endIdx < 1) return '';
+            let d = `M${points[0][0]},${points[0][1]}`;
+            for (let i = 1; i <= endIdx; i++) {
+                const prev = points[i-1];
+                const curr = points[i];
+                const cpx = (prev[0] + curr[0]) / 2;
+                const cpy = (prev[1] + curr[1]) / 2;
+                d += ` Q${prev[0]},${prev[1]} ${cpx},${cpy}`;
+            }
+            // נקודה סופית
+            const lastPt = points[endIdx];
+            d += ` L${lastPt[0]},${lastPt[1]}`;
+            return d;
+        };
+
         const animate = () => {
-            // שלב 1: ציור העיגול
+            // שלב 1: הנקודות מופיעות אחת אחת
             if (phase === 1) {
-                progress += 0.004;
-                const eased = easeInOut(Math.min(progress, 1));
+                progress += 0.025;
+                const t = Math.min(progress, 1);
 
-                // ציור העיגול בהדרגה
-                logoCircle.setAttribute('opacity', '1');
-                logoCircle.setAttribute('stroke-dashoffset', circleLength * (1 - eased));
-
-                // נקודה זוהרת נעה לאורך העיגול
-                const pos = pointOnCircle(eased);
-                heroGlow.setAttribute('cx', pos.x);
-                heroGlow.setAttribute('cy', pos.y);
-                heroGlow.setAttribute('opacity', '0.8');
+                // הופעת נקודות בהדרגה
+                arcDotEls.forEach((dot, i) => {
+                    const threshold = i / arcDotEls.length;
+                    if (t > threshold) {
+                        const dotOpacity = Math.min((t - threshold) * arcDotEls.length, 1) * 0.7;
+                        dot.setAttribute('opacity', dotOpacity);
+                    }
+                });
+                sDotEls.forEach((dot, i) => {
+                    const threshold = i / sDotEls.length;
+                    if (t > threshold) {
+                        const dotOpacity = Math.min((t - threshold) * sDotEls.length, 1) * 0.7;
+                        dot.setAttribute('opacity', dotOpacity);
+                    }
+                });
 
                 if (progress >= 1) {
-                    progress = 0;
                     phase = 2;
-                    heroGlow.setAttribute('opacity', '0');
+                    progress = 0;
+                    arcLine.setAttribute('opacity', '1');
+                    sLine.setAttribute('opacity', '1');
+                    glowA.setAttribute('opacity', '0.9');
+                    glowB.setAttribute('opacity', '0.9');
                 }
             }
 
-            // שלב 2: ציור החץ
+            // שלב 2: שני הקווים מציירים בו-זמנית
             else if (phase === 2) {
-                progress += 0.015;
-                const eased = easeInOut(Math.min(progress, 1));
+                progress += 0.006;
+                const t = easeInOut(Math.min(progress, 1));
 
-                logoArrow.setAttribute('opacity', '1');
-                logoArrow.setAttribute('stroke-dashoffset', arrowLength * (1 - eased));
+                // קו A - עיגול + חץ
+                arcLine.setAttribute('points', buildPolyline(arcPoints, t));
+                const posA = getPointOnPath(arcPoints, t);
+                glowA.setAttribute('cx', posA.x);
+                glowA.setAttribute('cy', posA.y);
+
+                // הדגשת נקודות שהקו עבר
+                arcDotEls.forEach((dot, i) => {
+                    const threshold = i / (arcPoints.length - 1);
+                    if (t > threshold) {
+                        dot.setAttribute('opacity', '1');
+                        dot.setAttribute('r', '4');
+                    }
+                });
+
+                // קו B - S
+                sLine.setAttribute('d', buildSmoothPath(sPoints, t));
+                const posB = getPointOnPath(sPoints, t);
+                glowB.setAttribute('cx', posB.x);
+                glowB.setAttribute('cy', posB.y);
+
+                // הדגשת נקודות שהקו עבר
+                sDotEls.forEach((dot, i) => {
+                    const threshold = i / (sPoints.length - 1);
+                    if (t > threshold) {
+                        dot.setAttribute('opacity', '1');
+                        dot.setAttribute('r', '4');
+                    }
+                });
 
                 if (progress >= 1) {
-                    progress = 0;
                     phase = 3;
+                    progress = 0;
+                    glowA.setAttribute('opacity', '0');
+                    glowB.setAttribute('opacity', '0');
                 }
             }
 
-            // שלב 3: הופעת ה-S
+            // שלב 3: בום! - הכל מודגש ביחד
             else if (phase === 3) {
-                progress += 0.02;
-                const eased = easeInOut(Math.min(progress, 1));
+                progress += 0.015;
+                const t = Math.min(progress, 1);
 
-                logoS.setAttribute('opacity', eased);
+                // קו העיגול מתעבה ומזהיר
+                const arcWidth = 6 + Math.sin(t * Math.PI) * 8;
+                arcLine.setAttribute('stroke-width', arcWidth);
+                arcLine.setAttribute('stroke', t < 0.5 ? '#d4b87a' : '#c8a45e');
+
+                // קו ה-S מתעבה ומזהיר
+                const sWidth = 6 + Math.sin(t * Math.PI) * 6;
+                sLine.setAttribute('stroke-width', sWidth);
+                sLine.setAttribute('stroke', t < 0.5 ? '#8a9aaa' : '#5a6a7a');
+
+                // נקודות מתפוצצות וזוהרות
+                arcDotEls.forEach(dot => {
+                    dot.setAttribute('r', 4 + Math.sin(t * Math.PI) * 4);
+                    dot.setAttribute('opacity', 0.7 + Math.sin(t * Math.PI) * 0.3);
+                });
+                sDotEls.forEach(dot => {
+                    dot.setAttribute('r', 4 + Math.sin(t * Math.PI) * 3);
+                    dot.setAttribute('opacity', 0.7 + Math.sin(t * Math.PI) * 0.3);
+                });
+
+                // הילת זוהר סופית
+                finalGlow.setAttribute('opacity', Math.sin(t * Math.PI) * 0.3);
 
                 if (progress >= 1) {
-                    progress = 0;
+                    // חזרה לרגיל
+                    arcLine.setAttribute('stroke-width', '6');
+                    sLine.setAttribute('stroke-width', '6');
+                    arcDotEls.forEach(d => { d.setAttribute('r', '3'); d.setAttribute('opacity', '0.5'); });
+                    sDotEls.forEach(d => { d.setAttribute('r', '3'); d.setAttribute('opacity', '0.5'); });
                     phase = 4;
-                }
-            }
-
-            // שלב 4: Arc Reactor - פולס זוהר
-            else if (phase === 4) {
-                progress += 0.008;
-
-                // הבזק חזק
-                const flash = Math.min(progress * 3, 1);
-                const flashEased = easeInOut(flash);
-
-                // העיגול זוהר בחזקה
-                logoCircle.setAttribute('stroke-width', 8 + flashEased * 6);
-                logoCircle.setAttribute('filter', flash < 1 ? 'url(#arcGlow)' : '');
-
-                // ה-S זוהר
-                logoS.setAttribute('fill', flash < 0.5 ? '#c8a45e' : '#5a6a7a');
-
-                // פולסים החוצה
-                arcPulse1.setAttribute('opacity', flashEased * 0.4);
-                arcPulse2.setAttribute('opacity', flashEased * 0.2);
-                arcPulse3.setAttribute('opacity', flashEased * 0.3);
-
-                // התפשטות הפולסים
-                arcPulse2.setAttribute('r', 170 + flashEased * 30);
-                arcPulse3.setAttribute('r', 130 - flashEased * 20);
-
-                if (progress >= 1) {
-                    // חזרה למצב יציב עם זוהר עדין
-                    logoCircle.setAttribute('stroke-width', '8');
-                    logoCircle.setAttribute('filter', '');
-                    logoS.setAttribute('fill', '#5a6a7a');
-                    phase = 5;
                     progress = 0;
                 }
             }
 
-            // שלב 5: פולס עדין חוזר (נשימה)
-            else if (phase === 5) {
-                arcReactorTime += 0.015;
-                const breath = (Math.sin(arcReactorTime) + 1) / 2; // 0-1
+            // שלב 4: נשימה עדינה מתמשכת
+            else if (phase === 4) {
+                breathTime += 0.02;
+                const breath = (Math.sin(breathTime) + 1) / 2;
 
-                arcPulse1.setAttribute('opacity', 0.08 + breath * 0.15);
-                arcPulse2.setAttribute('opacity', 0.03 + breath * 0.08);
-                arcPulse2.setAttribute('r', 170 + breath * 10);
-                arcPulse3.setAttribute('opacity', 0.05 + breath * 0.1);
-                arcPulse3.setAttribute('r', 130 - breath * 5);
-
-                // זוהר עדין על העיגול
-                logoCircle.setAttribute('stroke-width', 8 + breath * 1.5);
+                arcLine.setAttribute('stroke-width', 6 + breath * 1.5);
+                sLine.setAttribute('stroke-width', 6 + breath);
+                finalGlow.setAttribute('opacity', 0.03 + breath * 0.08);
+                finalGlow.setAttribute('r', 200 + breath * 15);
             }
 
             requestAnimationFrame(animate);
         };
 
-        // התחלת האנימציה אחרי שה-preloader נעלם
+        // התחלה אחרי preloader
         setTimeout(() => {
-            // הצגת הנקודה הזוהרת בנקודת ההתחלה (תחתית העיגול)
-            const startPos = pointOnCircle(0);
-            heroGlow.setAttribute('cx', startPos.x);
-            heroGlow.setAttribute('cy', startPos.y);
-            heroGlow.setAttribute('opacity', '0.8');
-
+            arcDotsG.setAttribute('opacity', '1');
+            sDotsG.setAttribute('opacity', '1');
             phase = 1;
             requestAnimationFrame(animate);
         }, 1500);
