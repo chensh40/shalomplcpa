@@ -480,28 +480,6 @@ document.addEventListener('DOMContentLoaded', () => {
         track.style.animationDuration = duration + 's';
     });
 
-    // Touch/Swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    track.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    track.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-        // RTL - כיוונים הפוכים
-        if (Math.abs(diff) > 50) {
-            if (diff < 0) {
-                goToSlide((currentSlide + 1) % totalSlides);
-            } else {
-                goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
-            }
-            resetAutoplay();
-        }
-    }, { passive: true });
-
     // ===== FAQ Accordion =====
     const faqItems = document.querySelectorAll('.faq-item');
 
