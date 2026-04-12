@@ -1,0 +1,9 @@
+# Playwright MCP cache + QA screenshots
+.playwright-mcp/
+*.playwright-mcp
+grants-desktop*.png
+grants-desktop*.jpeg
+grants-he-*.jpeg
+grants-mobile-*.jpeg
+services-*.jpeg
+services-*.png

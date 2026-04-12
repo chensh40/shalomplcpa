@@ -4,6 +4,47 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ===== Services Tabs =====
+    const serviceTabs = document.querySelectorAll('.services-tab');
+    const servicePanels = document.querySelectorAll('.services-panel');
+
+    const activateTab = (tab) => {
+        const targetId = tab.getAttribute('aria-controls');
+        serviceTabs.forEach(t => {
+            const isActive = t === tab;
+            t.classList.toggle('active', isActive);
+            t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            t.setAttribute('tabindex', isActive ? '0' : '-1');
+        });
+        servicePanels.forEach(p => {
+            const isMatch = p.id === targetId;
+            p.classList.toggle('active', isMatch);
+            if (isMatch) p.removeAttribute('hidden');
+            else p.setAttribute('hidden', '');
+        });
+    };
+
+    // Footer links that target a specific services tab
+    document.querySelectorAll('[data-footer-tab]').forEach(link => {
+        link.addEventListener('click', () => {
+            const key = link.getAttribute('data-footer-tab');
+            const targetTab = document.querySelector(`.services-tab[data-tab="${key}"]`);
+            if (targetTab) activateTab(targetTab);
+        });
+    });
+
+    serviceTabs.forEach((tab, idx) => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', (e) => {
+            let next = null;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = serviceTabs[(idx + 1) % serviceTabs.length];
+            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = serviceTabs[(idx - 1 + serviceTabs.length) % serviceTabs.length];
+            else if (e.key === 'Home') next = serviceTabs[0];
+            else if (e.key === 'End') next = serviceTabs[serviceTabs.length - 1];
+            if (next) { e.preventDefault(); activateTab(next); next.focus(); }
+        });
+    });
+
     // ===== מערכת תרגום (i18n) =====
     let currentLang = localStorage.getItem('lang') || 'he';
 
@@ -13,11 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { sel: '#services .section-tag', key: 'services_tag' },
         { sel: '#services-title', key: 'services_title' },
         { sel: '#services .section-desc', key: 'services_desc' },
-        // Service cards - title & desc
-        ...Array.from({ length: 12 }, (_, i) => [
-            { sel: `.services-grid .service-card:nth-child(${i + 1}) .service-title`, key: `svc${i + 1}_title` },
-            { sel: `.services-grid .service-card:nth-child(${i + 1}) .service-desc`, key: `svc${i + 1}_desc` }
-        ]).flat(),
+        // Service cards titles/descriptions are translated via data-i18n attributes (Phase 2)
         // About
         { sel: '#about .section-tag', key: 'about_tag' },
         { sel: '#about-title', key: 'about_title' },
@@ -55,10 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { sel: '#faq .section-tag', key: 'faq_tag' },
         { sel: '#faq-title', key: 'faq_title' },
         { sel: '#faq .section-desc', key: 'faq_desc' },
-        ...Array.from({ length: 7 }, (_, i) => [
-            { sel: `.faq-item:nth-child(${i + 1}) .faq-question span`, key: `faq${i + 1}_q` },
-            { sel: `.faq-item:nth-child(${i + 1}) .faq-answer p`, key: `faq${i + 1}_a` }
-        ]).flat(),
+        // FAQ items translated via data-i18n (Phase 2 – Hebrew-only for now)
         // Contact
         { sel: '#contact .section-tag', key: 'contact_tag' },
         { sel: '#contact-title', key: 'contact_title' },
@@ -87,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Footer quick links & service links
     const footerNavKeys = ['nav_home', 'nav_services', 'nav_about', 'nav_process', 'nav_testimonials', 'nav_contact'];
-    const footerSvcKeys = ['svc1_title', 'svc2_title', 'svc3_title', 'svc4_title', 'svc5_title', 'svc7_title'];
+    const footerSvcKeys = ['tab_acc', 'tab_tax', 'tab_bus', 'tab_val', 'tab_fin', 'tab_rep'];
 
     const applyTranslations = (lang) => {
         if (typeof translations === 'undefined') return;

@@ -10,6 +10,9 @@ const translations = {
     nav_services: {
         he: "שירותים", en: "Services", ar: "الخدمات", ru: "Услуги"
     },
+    nav_grants: {
+        he: "מענקים והלוואות", en: "Grants & Loans", ar: "المنح والقروض", ru: "Гранты и займы"
+    },
     nav_about: {
         he: "אודות", en: "About", ar: "من نحن", ru: "О нас"
     },
@@ -607,6 +610,329 @@ const translations = {
         ar: "حدث خطأ أثناء إرسال النموذج. يرجى المحاولة مرة أخرى أو الاتصال بنا هاتفياً.",
         ru: "Произошла ошибка при отправке формы. Пожалуйста, попробуйте снова или свяжитесь с нами по телефону."
     },
+
+    // ===== Grants & State-Backed Loans =====
+    grants_tag: {
+        he: "שירותי Premium", en: "Premium Services", ar: "خدمات Premium", ru: "Премиум услуги"
+    },
+    grants_title: {
+        he: "מענקים והלוואות בערבות מדינה",
+        en: "Grants & State-Backed Loans",
+        ar: "المنح والقروض بضمان الدولة",
+        ru: "Гранты и займы под госгарантию"
+    },
+    grants_subtitle: {
+        he: "אנחנו מלווים אתכם בכל התהליך – מהגשת הבקשה ועד קבלת הכספים",
+        en: "We guide you through the entire process — from application to receiving the funds",
+        ar: "نرافقكم في كل مراحل العملية – من تقديم الطلب وحتى استلام الأموال",
+        ru: "Мы сопровождаем вас на всём пути — от подачи заявки до получения средств"
+    },
+    grants_trust_1: {
+        he: "ליווי End-to-End מלא", en: "Full End-to-End Support", ar: "مرافقة شاملة End-to-End", ru: "Полное сопровождение"
+    },
+    grants_trust_2: {
+        he: "ניסיון של 30+ שנה", en: "30+ Years of Experience", ar: "خبرة أكثر من 30 عامًا", ru: "Опыт более 30 лет"
+    },
+    grants_trust_3: {
+        he: "ליווי אישי של שותף", en: "Personal Partner-Level Service", ar: "مرافقة شخصية من الشريك", ru: "Персональное сопровождение партнёра"
+    },
+    grants_trust_4: {
+        he: "היתרון של משרד רו\"ח", en: "The CPA Firm Advantage", ar: "ميزة مكتب المحاسبة", ru: "Преимущество аудиторской фирмы"
+    },
+    grants_card1_title: {
+        he: "מענקי רשות החדשנות והמדען הראשי",
+        en: "Innovation Authority & Chief Scientist Grants",
+        ar: "منح سلطة الابتكار وكبير العلماء",
+        ru: "Гранты Управления инноваций и Главного учёного"
+    },
+    grants_card1_desc: {
+        he: "מיפוי מסלולים, כתיבת תיק בקשה מקצועי, ניהול מענה לבקשות הבהרה של הבודקים וליווי בהגשת דוחות אבני דרך – עד קבלת הכספים בפועל.",
+        en: "Track mapping, professional proposal writing, managing responses to reviewer queries, and milestone reporting — all the way to receiving the funds.",
+        ar: "رسم المسارات، كتابة ملف طلب احترافي، إدارة الردود على استفسارات المُقيّمين ومرافقة تقارير المحطات – حتى استلام الأموال فعليًا.",
+        ru: "Подбор программы, профессиональная подготовка заявки, ответы рецензентам и отчётность по этапам — вплоть до получения средств."
+    },
+    grants_card1_li1: { he: "מענקי מו\"פ (מחקר ופיתוח)", en: "R&D Grants", ar: "منح البحث والتطوير", ru: "Гранты на НИОКР" },
+    grants_card1_li2: {
+        he: "מסלול תנופה לסטארטאפים בתחילת הדרך",
+        en: "Tnufa Track for Early-Stage Startups",
+        ar: "مسار تنوفا للشركات الناشئة",
+        ru: "Программа Tnufa для ранних стартапов"
+    },
+    grants_card1_li3: {
+        he: "מסלול קרן המו\"פ לחברות בוגרות",
+        en: "R&D Fund Track for Mature Companies",
+        ar: "مسار صندوق البحث والتطوير للشركات الناضجة",
+        ru: "Фонд НИОКР для зрелых компаний"
+    },
+    grants_card1_li4: {
+        he: "חממות טכנולוגיות ומסלולי פיילוט",
+        en: "Tech Incubators & Pilot Programs",
+        ar: "الحاضنات التكنولوجية والبرامج التجريبية",
+        ru: "Технологические инкубаторы и пилоты"
+    },
+    grants_card1_li5: {
+        he: "קרנות דו-לאומיות (BIRD, SIIRD, KORIL)",
+        en: "Bi-national Funds (BIRD, SIIRD, KORIL)",
+        ar: "الصناديق الثنائية (BIRD, SIIRD, KORIL)",
+        ru: "Двусторонние фонды (BIRD, SIIRD, KORIL)"
+    },
+    grants_card1_li6: {
+        he: "מענקי השקעה ותמיכות ענפיות ממשרד הכלכלה",
+        en: "Investment Grants & Industry Support from the Ministry of Economy",
+        ar: "منح الاستثمار والدعم القطاعي من وزارة الاقتصاد",
+        ru: "Инвестиционные гранты и отраслевая поддержка Минэкономики"
+    },
+    grants_card1_cta: {
+        he: "בדקו זכאות למענק", en: "Check Grant Eligibility", ar: "افحصوا الأهلية للمنحة", ru: "Проверить право на грант"
+    },
+    grants_card2_title: {
+        he: "הלוואות בערבות מדינה",
+        en: "State-Backed Loans",
+        ar: "قروض بضمان الدولة",
+        ru: "Займы под госгарантию"
+    },
+    grants_card2_desc: {
+        he: "הכנת תוכנית עסקית בסטנדרט הבנקאי, התאמה למסלולי הקרן (הון חוזר / השקעה / הקמה) וליווי מול הגוף המתאם והבנק עד אישור ההלוואה.",
+        en: "Bank-grade business plan preparation, matching to fund tracks (working capital / investment / new business), and full support with the coordinator and bank until loan approval.",
+        ar: "إعداد خطة عمل بمعيار بنكي، ملاءمة لمسارات الصندوق (رأس مال عامل / استثمار / تأسيس)، ومرافقة أمام الجهة المنسقة والبنك حتى الموافقة.",
+        ru: "Подготовка бизнес-плана банковского уровня, подбор программы (оборотный капитал / инвестиции / запуск) и сопровождение до одобрения займа."
+    },
+    grants_card2_li1: {
+        he: "קרן בערבות מדינה לעסקים קטנים ובינוניים",
+        en: "State-Guaranteed Fund for SMBs",
+        ar: "صندوق الدولة للشركات الصغيرة والمتوسطة",
+        ru: "Госфонд для малого и среднего бизнеса"
+    },
+    grants_card2_li2: {
+        he: "מסלולי הון חוזר, השקעה והקמת עסק",
+        en: "Working Capital, Investment & Startup Tracks",
+        ar: "مسارات رأس المال العامل والاستثمار والتأسيس",
+        ru: "Оборотный капитал, инвестиции и запуск"
+    },
+    grants_card2_li3: {
+        he: "הכנת תוכנית עסקית ותזרים מזומנים",
+        en: "Business Plan & Cash Flow Preparation",
+        ar: "إعداد خطة عمل وتدفق نقدي",
+        ru: "Бизнес-план и денежный поток"
+    },
+    grants_card2_li4: {
+        he: "ריביות נמוכות וערבויות עד 15%",
+        en: "Low Interest Rates & Collateral up to 15%",
+        ar: "فوائد منخفضة وضمانات حتى 15%",
+        ru: "Низкие ставки и залог до 15%"
+    },
+    grants_card2_li5: {
+        he: "ליווי מול הבנק והגוף המתאם (BDO / BDSK)",
+        en: "Support with the Bank & Coordinator (BDO / BDSK)",
+        ar: "مرافقة أمام البنك والجهة المنسقة (BDO / BDSK)",
+        ru: "Сопровождение с банком и координатором (BDO / BDSK)"
+    },
+    grants_card2_li6: {
+        he: "טיפול מלא בבירוקרטיה ובדרישות החיתום",
+        en: "Full Handling of Bureaucracy & Underwriting",
+        ar: "معالجة كاملة للإجراءات ومتطلبات التعهد",
+        ru: "Полное ведение бюрократии и андеррайтинга"
+    },
+    grants_card2_cta: {
+        he: "קבלו ייעוץ ללא התחייבות",
+        en: "Get a Free Consultation",
+        ar: "احصلوا على استشارة دون التزام",
+        ru: "Бесплатная консультация"
+    },
+    grants_process_title: {
+        he: "התהליך שלנו בארבעה שלבים",
+        en: "Our Process in Four Steps",
+        ar: "عمليتنا في أربع خطوات",
+        ru: "Наш процесс в четыре шага"
+    },
+    grants_step1_title: { he: "אבחון זכאות", en: "Eligibility Assessment", ar: "تشخيص الأهلية", ru: "Проверка права" },
+    grants_step1_desc: {
+        he: "פגישת היכרות ומיפוי המסלולים הרלוונטיים לעסק שלכם – ללא עלות וללא התחייבות.",
+        en: "Intro meeting and mapping of relevant tracks for your business — free of charge, no obligation.",
+        ar: "اجتماع تعارف وتحديد المسارات المناسبة لعملكم – دون تكلفة ودون التزام.",
+        ru: "Вводная встреча и подбор подходящих программ — бесплатно и без обязательств."
+    },
+    grants_step2_title: { he: "הכנת התיק", en: "File Preparation", ar: "إعداد الملف", ru: "Подготовка досье" },
+    grants_step2_desc: {
+        he: "כתיבת תיק בקשה / תוכנית עסקית, בניית תקציב ואבני דרך והכנת כל המסמכים הנלווים.",
+        en: "Writing the application / business plan, building budgets and milestones, and preparing all supporting documents.",
+        ar: "كتابة ملف الطلب / خطة العمل، بناء الميزانية والمحطات وإعداد جميع المستندات المرفقة.",
+        ru: "Подготовка заявки / бизнес-плана, бюджета, этапов и всех сопроводительных документов."
+    },
+    grants_step3_title: { he: "הגשה וליווי", en: "Submission & Support", ar: "التقديم والمرافقة", ru: "Подача и сопровождение" },
+    grants_step3_desc: {
+        he: "הגשה רשמית, מענה לבקשות הבהרה של הבודקים וניהול השיח מול הגוף המממן.",
+        en: "Official submission, responding to reviewer queries, and managing dialogue with the funding body.",
+        ar: "تقديم رسمي، الرد على استفسارات المُقيّمين وإدارة الحوار مع الجهة الممولة.",
+        ru: "Официальная подача, ответы рецензентам и диалог с финансирующим органом."
+    },
+    grants_step4_title: { he: "קבלת הכספים", en: "Receiving the Funds", ar: "استلام الأموال", ru: "Получение средств" },
+    grants_step4_desc: {
+        he: "ליווי באישור, משיכת התשלומים והגשת דוחות תקופתיים לאורך תקופת המענק/ההלוואה.",
+        en: "Support through approval, drawdown of payments, and periodic reporting throughout the grant/loan period.",
+        ar: "مرافقة في الموافقة، سحب الدفعات وتقديم تقارير دورية طوال فترة المنحة/القرض.",
+        ru: "Сопровождение утверждения, получения траншей и периодической отчётности."
+    },
+
+    // ===== Services Tabs (6 categories) =====
+    tab_acc: { he: "הנהלת חשבונות ושכר", en: "Bookkeeping & Payroll", ar: "مسك الدفاتر والرواتب", ru: "Бухгалтерия и зарплата" },
+    tab_tax: { he: "מס ורשויות", en: "Tax & Authorities", ar: "الضرائب والسلطات", ru: "Налоги и органы" },
+    tab_bus: { he: "ליווי עסקי", en: "Business Advisory", ar: "الاستشارات التجارية", ru: "Бизнес-сопровождение" },
+    tab_val: { he: "הערכות שווי ומיזוגים", en: "Valuation & M&A", ar: "التقييم والاندماجات", ru: "Оценка и слияния" },
+    tab_fin: { he: "מימון והון", en: "Financing & Capital", ar: "التمويل ورأس المال", ru: "Финансирование" },
+    tab_rep: { he: "דוחות כספיים", en: "Financial Reports", ar: "التقارير المالية", ru: "Фин. отчётность" },
+
+    // ===== Accounting Panel =====
+    svc_acc_1_title: { he: "הנהלת חשבונות", en: "Bookkeeping", ar: "مسك الدفاتر", ru: "Бухгалтерия" },
+    svc_acc_1_desc: { he: "ניהול ספרים מדויק לעסקים בכל הגדלים, דיווחי מע\"מ ומקדמות שוטפים והפקת דוחות ניהוליים.", en: "Accurate bookkeeping for businesses of all sizes, ongoing VAT and advance reports, and management reports.", ar: "مسك دفاتر دقيق لجميع أحجام الأعمال، تقارير ضريبة القيمة المضافة والدفعات، وتقارير إدارية.", ru: "Точное ведение учёта для бизнесов любого размера, отчёты НДС и управленческая отчётность." },
+    svc_acc_2_title: { he: "שכר ותנאים סוציאליים", en: "Payroll & Benefits", ar: "الرواتب والمزايا", ru: "Зарплата и соц. выплаты" },
+    svc_acc_2_desc: { he: "הפקת תלושי שכר, ניהול תנאים סוציאליים, דיווחים לביטוח לאומי ולמס הכנסה וייעוץ בדיני עבודה.", en: "Payslip generation, social benefits management, reporting to National Insurance and tax authorities, and employment law advisory.", ar: "إصدار قسائم الرواتب وإدارة المزايا والتقارير لمؤسسة التأمين الوطني ومصلحة الضرائب.", ru: "Расчёт зарплат, соц. пакеты, отчётность в НИИ и налоговую, консультации по трудовому праву." },
+    det_acc_title: { he: "בסיס חשבונאי חזק – זה מתחיל אצלנו", en: "A Strong Accounting Foundation — Starts Here", ar: "أساس محاسبي قوي – يبدأ معنا", ru: "Надёжная бухгалтерская основа — начинается у нас" },
+    det_acc_sub: { he: "מעבירים אתכם מניירת ועומסים חודשיים למנגנון שקט, מדויק ובזמן – כל חודש מחדש.", en: "From paperwork and monthly overload to a quiet, accurate, on-time mechanism — every single month.", ar: "ننقلكم من الأعمال الورقية والضغط الشهري إلى آلية هادئة ودقيقة وفي الوقت المحدد.", ru: "От бумаг и ежемесячного аврала — к тихой, точной и своевременной машине." },
+    trust_acc_1: { he: "דיווח בזמן, בלי קנסות", en: "On-time filing, no penalties", ar: "تقارير في موعدها دون غرامات", ru: "Отчёты в срок, без штрафов" },
+    trust_acc_2: { he: "תוכנות ענן מובילות", en: "Leading cloud software", ar: "برامج سحابية رائدة", ru: "Ведущее облачное ПО" },
+    trust_acc_3: { he: "ליווי מנהלת חשבונות צמודה", en: "Dedicated bookkeeper", ar: "محاسب مخصص", ru: "Персональный бухгалтер" },
+    trust_acc_4: { he: "דוחות ניהוליים חודשיים", en: "Monthly management reports", ar: "تقارير إدارية شهرية", ru: "Ежемесячные отчёты" },
+    step_acc_1_title: { he: "Onboarding והעברת ספרים", en: "Onboarding & Handover", ar: "الانضمام ونقل الدفاتر", ru: "Онбординг и передача" },
+    step_acc_1_desc: { he: "קבלת גישה למערכות, ייבוא נתונים היסטוריים ובחינת מבנה החשבונות הקיים.", en: "System access, historical data import, and review of existing chart of accounts.", ar: "الوصول إلى الأنظمة واستيراد البيانات التاريخية ومراجعة دليل الحسابات.", ru: "Доступ к системам, импорт исторических данных и аудит плана счетов." },
+    step_acc_2_title: { he: "עיבוד חודשי שוטף", en: "Monthly Processing", ar: "المعالجة الشهرية", ru: "Ежемесячная обработка" },
+    step_acc_2_desc: { he: "רישום חשבוניות, התאמות בנק, הפקת שכר ודיווחי מע\"מ/מקדמות בזמן.", en: "Invoice recording, bank reconciliations, payroll, and timely VAT/advance filings.", ar: "تسجيل الفواتير ومطابقة البنك والرواتب وتقارير الضريبة في موعدها.", ru: "Учёт счетов, сверки с банком, зарплата и своевременные НДС-отчёты." },
+    step_acc_3_title: { he: "דוחות ובקרה", en: "Reports & Control", ar: "التقارير والرقابة", ru: "Отчёты и контроль" },
+    step_acc_3_desc: { he: "דוח חודשי עם ניתוח הכנסות/הוצאות, תזרים ומדדים ניהוליים לקבלת החלטות.", en: "Monthly report with income/expense analysis, cash flow, and KPIs for decision-making.", ar: "تقرير شهري بتحليل الإيرادات والمصروفات والتدفق النقدي ومؤشرات الأداء.", ru: "Ежемесячный отчёт: анализ доходов/расходов, денежный поток и KPI." },
+    step_acc_4_title: { he: "סגירת שנה", en: "Year-End Close", ar: "إقفال السنة", ru: "Закрытие года" },
+    step_acc_4_desc: { he: "הכנה מסודרת של תיקי שנה לרואה החשבון ולדוחות השנתיים – בלי לחץ של רגע אחרון.", en: "Orderly year-end file preparation for the CPA and annual reports — no last-minute stress.", ar: "إعداد ملفات السنة للمحاسب والتقارير السنوية دون ضغط اللحظة الأخيرة.", ru: "Чёткая подготовка годовых папок для аудитора — без спешки." },
+
+    // ===== Tax Panel =====
+    svc_tax_1_title: { he: "ייעוץ מס", en: "Tax Consulting", ar: "استشارات ضريبية", ru: "Налоговые консультации" },
+    svc_tax_1_desc: { he: "אופטימיזציה של חבויות מס ליחידים ולחברות, זיהוי זיכויים והקלות ומענה שוטף במהלך השנה.", en: "Tax liability optimization for individuals and companies, credit identification, and year-round support.", ar: "تحسين الالتزامات الضريبية للأفراد والشركات وتحديد الائتمانات والدعم المستمر.", ru: "Оптимизация налоговых обязательств, поиск льгот и поддержка в течение года." },
+    svc_tax_2_title: { he: "תכנון מס אסטרטגי", en: "Strategic Tax Planning", ar: "التخطيط الضريبي الاستراتيجي", ru: "Стратегическое налоговое планирование" },
+    svc_tax_2_desc: { he: "תכנון מס רב-שנתי המותאם למבנה העסקי – חיסכון משמעותי בישראל ובחו\"ל (IRS) בעמידה מלאה בחוק.", en: "Multi-year tax planning tailored to your business structure — significant savings in Israel and abroad (IRS), fully compliant.", ar: "تخطيط ضريبي متعدد السنوات مخصص لبنية الأعمال – توفير كبير في إسرائيل والخارج (IRS).", ru: "Многолетнее налоговое планирование под вашу структуру — экономия в Израиле и за рубежом (IRS)." },
+    svc_tax_3_title: { he: "בדיקת רווחים כלואים", en: "Trapped Profits Audit", ar: "فحص الأرباح المحتجزة", ru: "Аудит запертой прибыли" },
+    svc_tax_3_desc: { he: "ניתוח יתרת רווחים עודפים ובניית אסטרטגיית חלוקה אופטימלית לאור חוק הרווחים הכלואים 2025.", en: "Analysis of retained earnings and optimal distribution strategy under the 2025 Trapped Profits Law.", ar: "تحليل الأرباح المحتجزة ووضع استراتيجية التوزيع المثلى وفقاً لقانون 2025.", ru: "Анализ нераспределённой прибыли и оптимальная стратегия распределения по закону 2025 г." },
+    svc_tax_4_title: { he: "ייצוג מול רשויות המס", en: "Tax Authority Representation", ar: "التمثيل أمام السلطات الضريبية", ru: "Представительство в налоговых органах" },
+    svc_tax_4_desc: { he: "ייצוג מקצועי מול מס הכנסה, מע\"מ, ביטוח לאומי ו-IRS בשומות, השגות, ערעורים והליכי ביקורת.", en: "Professional representation before ITA, VAT, National Insurance, and IRS — assessments, objections, appeals, and audits.", ar: "تمثيل مهني أمام ضريبة الدخل وضريبة القيمة المضافة والتأمين الوطني وIRS.", ru: "Профессиональное представительство перед налоговой, НДС, НИИ и IRS." },
+    svc_tax_5_title: { he: "מיסוי בינלאומי", en: "International Taxation", ar: "الضرائب الدولية", ru: "Международное налогообложение" },
+    svc_tax_5_desc: { he: "תכנון מס בינלאומי, אמנות מס, מיסוי עולים חדשים ותושבים חוזרים ודיווח על הכנסות מחו\"ל.", en: "International tax planning, tax treaties, new-immigrant and returning-resident taxation, foreign income reporting.", ar: "التخطيط الضريبي الدولي والمعاهدات الضريبية والمهاجرين الجدد والدخل الأجنبي.", ru: "Международное планирование, налоговые соглашения, новые репатрианты и зарубежные доходы." },
+    det_tax_title: { he: "תכנון מס שמחזיר את עצמו – ואת החלטות העסק", en: "Tax Planning That Pays for Itself", ar: "تخطيط ضريبي يدفع ثمن نفسه", ru: "Налоговое планирование, которое окупается" },
+    det_tax_sub: { he: "מבט רחב על כל מרחב המיסוי – מס הכנסה, מע\"מ, ביטוח לאומי, IRS והרפורמה של הרווחים הכלואים – כדי לזהות איפה אתם משלמים יותר מהנדרש.", en: "A wide view across income tax, VAT, National Insurance, IRS, and the Trapped Profits reform — to identify where you're overpaying.", ar: "نظرة شاملة على ضريبة الدخل وضريبة القيمة المضافة والتأمين الوطني وIRS لتحديد مواطن الدفع الزائد.", ru: "Широкий взгляд на подоходный, НДС, соц. страхование, IRS и реформу запертой прибыли — чтобы найти переплаты." },
+    trust_tax_1: { he: "מומחיות בישראל ובחו\"ל (IRS)", en: "Expertise in Israel & abroad (IRS)", ar: "خبرة في إسرائيل والخارج (IRS)", ru: "Экспертиза в Израиле и за рубежом (IRS)" },
+    trust_tax_2: { he: "עדכון שוטף לרפורמות 2025", en: "Current on 2025 reforms", ar: "محدثون بإصلاحات 2025", ru: "В курсе реформ 2025" },
+    trust_tax_3: { he: "תכנון רב-שנתי (לא רגעי)", en: "Multi-year planning (not ad-hoc)", ar: "تخطيط متعدد السنوات", ru: "Многолетнее планирование" },
+    trust_tax_4: { he: "אחוזי הצלחה גבוהים בייצוג", en: "High success rate in representation", ar: "نسب نجاح عالية في التمثيل", ru: "Высокий процент успеха" },
+    step_tax_1_title: { he: "אבחון מקדים", en: "Initial Diagnosis", ar: "التشخيص الأولي", ru: "Первичная диагностика" },
+    step_tax_1_desc: { he: "בחינת מצב המס הנוכחי, זיהוי חשיפות והזדמנויות – כולל יתרת רווחים צבורים וקרנות מס ישראליות ובינלאומיות.", en: "Review of current tax position, exposures and opportunities — including retained earnings and domestic/international tax funds.", ar: "مراجعة الوضع الضريبي الحالي والمخاطر والفرص – بما في ذلك الأرباح المحتجزة.", ru: "Анализ текущей налоговой позиции, рисков и возможностей — включая нераспределённую прибыль." },
+    step_tax_2_title: { he: "בניית אסטרטגיה", en: "Strategy Design", ar: "بناء الاستراتيجية", ru: "Построение стратегии" },
+    step_tax_2_desc: { he: "תוכנית רב-שנתית לחלוקת דיבידנדים, תזמון הכרה בהכנסות והוצאות, וניצול מסלולי פטור כמו חוק הרווחים הכלואים.", en: "Multi-year plan for dividend distribution, income/expense timing, and exemption routes like the Trapped Profits Law.", ar: "خطة متعددة السنوات لتوزيع الأرباح وتوقيت الإيرادات والإعفاءات.", ru: "Многолетний план по дивидендам, тайминг доходов/расходов, льготы." },
+    step_tax_3_title: { he: "יישום והגשה", en: "Implementation & Filing", ar: "التنفيذ والتقديم", ru: "Реализация и подача" },
+    step_tax_3_desc: { he: "הגשת דוחות מעודכנים, בקשות החזר מס וטיפול בשומות – כולל ייצוג מול פקידי שומה ובוחני מע\"מ.", en: "Filing updated returns, refund claims, and assessment handling — including representation before assessing officers.", ar: "تقديم التقارير المحدثة وطلبات استرداد الضرائب والتعامل مع التقييمات.", ru: "Подача уточнённых деклараций, возвраты налогов, работа с инспекторами." },
+    step_tax_4_title: { he: "מעקב שנתי", en: "Annual Review", ar: "المتابعة السنوية", ru: "Ежегодный мониторинг" },
+    step_tax_4_desc: { he: "עדכון התוכנית בהתאם לשינויי חקיקה (חוזרי רשות המסים, חוקים חדשים) ולשינויים בחייכם האישיים או בעסק.", en: "Plan updates for legislative changes (tax circulars, new laws) and personal or business changes.", ar: "تحديث الخطة وفقاً للتغييرات التشريعية والشخصية والتجارية.", ru: "Обновление плана при изменениях в законодательстве и в вашей жизни или бизнесе." },
+
+    // ===== Business Panel =====
+    svc_bus_1_title: { he: "הקמת חברות ועוסקים", en: "Company & Business Formation", ar: "تأسيس الشركات والأعمال", ru: "Регистрация компаний и ИП" },
+    svc_bus_1_desc: { he: "ליווי מלא בבחירת המבנה המשפטי, רישום ברשויות ובניית תשתית חשבונאית לעסק החדש.", en: "Full guidance in choosing legal structure, registration, and building the accounting foundation for the new business.", ar: "دعم كامل في اختيار الهيكل القانوني والتسجيل وبناء البنية المحاسبية.", ru: "Полное сопровождение при выборе формы, регистрации и создании бух. основы." },
+    svc_bus_2_title: { he: "ליווי עסקי ופיננסי", en: "Business & Financial Advisory", ar: "الاستشارات التجارية والمالية", ru: "Бизнес- и финансовое сопровождение" },
+    svc_bus_2_desc: { he: "שותף שמכיר את המספרים – תזרים, תקציבים, ניתוחי רווחיות וליווי מול בנקים ומממנים.", en: "A partner who knows your numbers — cash flow, budgets, profitability analysis, and bank/financier liaison.", ar: "شريك يعرف أرقامك – التدفق النقدي والميزانيات وتحليل الربحية.", ru: "Партнёр, который знает ваши цифры — поток, бюджеты, рентабельность, банки." },
+    svc_bus_3_title: { he: "ייעוץ אסטרטגי", en: "Strategic Advisory", ar: "الاستشارات الاستراتيجية", ru: "Стратегическое консультирование" },
+    svc_bus_3_desc: { he: "ניתוח עומק של העסק, זיהוי צמתי החלטה ובניית תוכניות פעולה רב-שנתיות לצמיחה וניהול סיכונים.", en: "Deep business analysis, decision-point identification, and multi-year action plans for growth and risk management.", ar: "تحليل عميق للأعمال وتحديد نقاط القرار وخطط عمل متعددة السنوات.", ru: "Глубокий анализ бизнеса, выявление ключевых решений и многолетние планы роста." },
+    svc_bus_4_title: { he: "ליווי והטמעת AI לעסק", en: "AI Integration for Business", ar: "دمج الذكاء الاصطناعي للأعمال", ru: "Внедрение AI в бизнес" },
+    svc_bus_4_desc: { he: "מיפוי תהליכים, בחירת כלי AI מתאימים והטמעה מלאה בצוות – לחיסכון אמיתי של שעות עבודה.", en: "Process mapping, selecting the right AI tools, and full team implementation — for real time savings.", ar: "رسم خرائط العمليات واختيار أدوات الذكاء الاصطناعي والتنفيذ الكامل.", ru: "Картирование процессов, подбор AI-инструментов и внедрение в команде." },
+    det_bus_title: { he: "שותף עסקי – לא רק רואה חשבון", en: "A Business Partner — Not Just a CPA", ar: "شريك تجاري – وليس فقط محاسب", ru: "Бизнес-партнёр — не просто бухгалтер" },
+    det_bus_sub: { he: "מעבר לספרים ולדוחות – אנחנו שולחן ייעוץ עסקי שמכיר את המספרים שלכם מבפנים, יחד עם ההזדמנויות של הזמן הזה.", en: "Beyond books and reports — a consulting table that knows your numbers inside out, along with today's opportunities.", ar: "ما وراء الدفاتر والتقارير – مجلس استشاري يعرف أرقامك من الداخل.", ru: "За пределами бухгалтерии — консалтинг, знающий ваши цифры изнутри." },
+    trust_bus_1: { he: "ליווי אישי של שותף במשרד", en: "Partner-level personal guidance", ar: "مرافقة شخصية من شريك", ru: "Личное сопровождение партнёра" },
+    trust_bus_2: { he: "ניסיון ב-100+ עסקים במגזרים שונים", en: "100+ businesses across sectors", ar: "خبرة في 100+ عمل في قطاعات متعددة", ru: "100+ бизнесов в разных отраслях" },
+    trust_bus_3: { he: "מומחיות AI וכלי אוטומציה", en: "AI & automation expertise", ar: "خبرة الذكاء الاصطناعي والأتمتة", ru: "Экспертиза AI и автоматизация" },
+    trust_bus_4: { he: "מבט לטווח ארוך, לא רק לחודש", en: "Long-term view, not just monthly", ar: "نظرة طويلة المدى، وليس شهرية فقط", ru: "Долгосрочный взгляд, не только на месяц" },
+    step_bus_1_title: { he: "הכרה והבנה", en: "Discovery", ar: "التعارف والفهم", ru: "Знакомство" },
+    step_bus_1_desc: { he: "פגישת עומק להכרת העסק – המספרים, האנשים, היעדים, החוזקות והנקודות הכואבות.", en: "Deep-dive meeting — numbers, people, goals, strengths, and pain points.", ar: "اجتماع متعمق للتعرف على العمل – الأرقام والأشخاص والأهداف.", ru: "Глубокая встреча — цифры, люди, цели, сильные и слабые стороны." },
+    step_bus_2_title: { he: "תוכנית פעולה", en: "Action Plan", ar: "خطة العمل", ru: "План действий" },
+    step_bus_2_desc: { he: "בניית Roadmap תלת-שנתי עם יעדים מדידים, תקציב, אבני דרך ואיפה AI יכול לחסוך זמן וכסף.", en: "Three-year roadmap with measurable goals, budget, milestones, and where AI can save time and money.", ar: "خارطة طريق لثلاث سنوات بأهداف قابلة للقياس وميزانية ومعالم.", ru: "Трёхлетний roadmap: цели, бюджет, майлстоуны и где AI сэкономит." },
+    step_bus_3_title: { he: "יישום וליווי", en: "Implementation & Support", ar: "التنفيذ والمرافقة", ru: "Внедрение и поддержка" },
+    step_bus_3_desc: { he: "פגישות רבעוניות, ליווי החלטות עסקיות קריטיות, הטמעת כלי AI והכנת פגישות מול בנקים ומשקיעים.", en: "Quarterly meetings, critical decision support, AI rollout, and prep for bank/investor meetings.", ar: "اجتماعات ربع سنوية ودعم القرارات الحاسمة وتنفيذ أدوات الذكاء الاصطناعي.", ru: "Ежеквартальные встречи, поддержка решений, внедрение AI." },
+    step_bus_4_title: { he: "מדידה ועדכון", en: "Measure & Update", ar: "القياس والتحديث", ru: "Измерение и обновление" },
+    step_bus_4_desc: { he: "בקרה על ביצוע התוכנית, מדידת ROI של השיפורים, והתאמה שוטפת לשינויים בשוק ובעסק.", en: "Plan execution monitoring, ROI measurement, and ongoing adjustment to market and business changes.", ar: "مراقبة تنفيذ الخطة وقياس العائد على الاستثمار والتكيف المستمر.", ru: "Контроль плана, измерение ROI и корректировка под изменения." },
+
+    // ===== Valuation Panel =====
+    svc_val_1_title: { he: "הערכות שווי לחברות ונכסים", en: "Company & Asset Valuations", ar: "تقييم الشركات والأصول", ru: "Оценка компаний и активов" },
+    svc_val_1_desc: { he: "הערכות שווי מקצועיות לחברות, מניות ונכסים בלתי-מוחשיים, כולל בדיקות נאותות לעסקאות מיזוג ורכישה.", en: "Professional valuations for companies, shares and intangibles — including M&A due diligence.", ar: "تقييمات مهنية للشركات والأسهم والأصول غير الملموسة بما في ذلك الاندماجات.", ru: "Профессиональная оценка компаний, акций и нематериальных активов, включая M&A." },
+    det_val_title: { he: "מבעד למאזן – שווי אמיתי לעסקה אמיתית", en: "Beyond the Balance Sheet — Real Value for Real Deals", ar: "ما وراء الميزانية – قيمة حقيقية لصفقة حقيقية", ru: "За балансом — реальная стоимость для реальных сделок" },
+    det_val_sub: { he: "הערכות שווי מבוססות מתודולוגיות מקובלות (DCF, השוואה, עלות) עם מבט של רואה חשבון על הדוחות הכספיים מאחוריהם.", en: "Valuations grounded in accepted methodologies (DCF, Market, Asset) with a CPA's view of the underlying financial statements.", ar: "تقييمات مبنية على منهجيات معتمدة (DCF والسوق والأصول) مع نظرة محاسبية على البيانات المالية.", ru: "Оценки по признанным методологиям (DCF, рыночная, затратная) с аудиторским взглядом на отчётность." },
+    trust_val_1: { he: "מתודולוגיות DCF, Market, Asset", en: "DCF, Market & Asset methodologies", ar: "منهجيات DCF والسوق والأصول", ru: "DCF, рыночный и затратный методы" },
+    trust_val_2: { he: "חוות דעת מקובלות בבית משפט", en: "Court-accepted expert opinions", ar: "آراء خبراء مقبولة في المحكمة", ru: "Экспертизы для суда" },
+    trust_val_3: { he: "בדיקות נאותות (Due Diligence)", en: "Due Diligence reviews", ar: "العناية الواجبة (Due Diligence)", ru: "Due Diligence" },
+    trust_val_4: { he: "סודיות מלאה ועצמאות", en: "Full confidentiality & independence", ar: "سرية تامة واستقلالية", ru: "Конфиденциальность и независимость" },
+    step_val_1_title: { he: "הגדרת מטרת ההערכה", en: "Define Valuation Purpose", ar: "تحديد هدف التقييم", ru: "Определение цели оценки" },
+    step_val_1_desc: { he: "האם זו עסקת מכירה, גיוס הון, חוות דעת לבית משפט או PPA? הגדרה מדויקת של הכללים והסטנדרטים.", en: "Sale, capital raise, court opinion, or PPA? Precise definition of rules and standards.", ar: "هل هي عملية بيع أم جمع رأس مال أم رأي محكمة أم PPA؟ تعريف دقيق للقواعد والمعايير.", ru: "Продажа, привлечение капитала, судебная экспертиза или PPA? Чёткие правила и стандарты." },
+    step_val_2_title: { he: "איסוף ובחינה", en: "Collection & Review", ar: "الجمع والمراجعة", ru: "Сбор и анализ" },
+    step_val_2_desc: { he: "ניתוח מעמיק של דוחות כספיים, תחזיות, חוזים ודטה תפעולית – כולל בדיקת נאותות בשטח.", en: "In-depth analysis of financials, forecasts, contracts, and operational data — including on-site due diligence.", ar: "تحليل عميق للبيانات المالية والتوقعات والعقود والبيانات التشغيلية.", ru: "Глубокий анализ отчётности, прогнозов, контрактов и операционных данных." },
+    step_val_3_title: { he: "חישוב ומודלים", en: "Modeling & Calculation", ar: "الحساب والنماذج", ru: "Моделирование и расчёт" },
+    step_val_3_desc: { he: "בניית מודל DCF, ניתוח מכפילים של חברות השוואה וחישוב עלות הון מותאמת לענף.", en: "Building DCF model, peer-company multiples analysis, and industry-adjusted cost of capital.", ar: "بناء نموذج DCF وتحليل مضاعفات الشركات المقارنة وحساب تكلفة رأس المال.", ru: "Построение DCF, анализ мультипликаторов аналогов и стоимость капитала." },
+    step_val_4_title: { he: "חוות דעת מפורטת", en: "Detailed Opinion", ar: "رأي مفصل", ru: "Детальное заключение" },
+    step_val_4_desc: { he: "מסמך הערכה עם נימוקים מתודולוגיים, הנחות, טווחי רגישות ומסקנות – מוכן להצגה לקונים/משקיעים/בתי משפט.", en: "Valuation document with methodology, assumptions, sensitivity ranges, and conclusions — ready for buyers/investors/courts.", ar: "وثيقة تقييم مع منهجية وافتراضات ونطاقات حساسية واستنتاجات.", ru: "Документ с методологией, допущениями, чувствительностью и выводами." },
+
+    // ===== Financing Panel =====
+    svc_fin_1_title: { he: "מענקים ממשלתיים", en: "Government Grants", ar: "المنح الحكومية", ru: "Государственные гранты" },
+    svc_fin_1_desc: { he: "רשות החדשנות, המדען הראשי, חממות, קרנות דו-לאומיות (BIRD/SIIRD) ומסלולי משרד הכלכלה.", en: "Innovation Authority, Chief Scientist, incubators, bi-national funds (BIRD/SIIRD), and Ministry of Economy programs.", ar: "سلطة الابتكار وكبير العلماء والحاضنات والصناديق الثنائية (BIRD/SIIRD).", ru: "Управление инноваций, Главный учёный, инкубаторы, двусторонние фонды." },
+    svc_fin_2_title: { he: "הלוואות בערבות מדינה", en: "State-Guaranteed Loans", ar: "قروض بضمان الدولة", ru: "Займы под госгарантию" },
+    svc_fin_2_desc: { he: "הכנת תוכנית עסקית בסטנדרט בנקאי, התאמה למסלולי הקרן וליווי מול הבנק והגוף המתאם.", en: "Bank-grade business plan, fund track matching, and support with the bank and coordinator.", ar: "إعداد خطة عمل بمعيار بنكي وملاءمة لمسارات الصندوق ومرافقة أمام البنك.", ru: "Банковский бизнес-план, подбор программы и сопровождение банка и координатора." },
+    det_fin_title: { he: "מענקים והלוואות בערבות מדינה", en: "Grants & State-Backed Loans", ar: "المنح والقروض بضمان الدولة", ru: "Гранты и займы под госгарантию" },
+    det_fin_sub: { he: "אנחנו מלווים אתכם בכל התהליך – מהגשת הבקשה ועד קבלת הכספים.", en: "We guide you through the entire process — from application to receiving the funds.", ar: "نرافقكم في كامل العملية – من التقديم حتى استلام الأموال.", ru: "Мы сопровождаем вас весь путь — от заявки до получения средств." },
+    trust_fin_1: { he: "ליווי End-to-End מלא", en: "Full End-to-End Support", ar: "مرافقة كاملة End-to-End", ru: "Полное сопровождение" },
+    trust_fin_2: { he: "ניסיון של 30+ שנה", en: "30+ Years Experience", ar: "خبرة 30+ عامًا", ru: "Опыт 30+ лет" },
+    trust_fin_3: { he: "ליווי אישי של שותף", en: "Personal Partner-Level Service", ar: "مرافقة شخصية من شريك", ru: "Сопровождение партнёра" },
+    trust_fin_4: { he: "היתרון של משרד רו\"ח", en: "The CPA Firm Advantage", ar: "ميزة مكتب المحاسبة", ru: "Преимущество CPA-фирмы" },
+    step_fin_1_title: { he: "אבחון זכאות", en: "Eligibility Assessment", ar: "تقييم الأهلية", ru: "Оценка права" },
+    step_fin_1_desc: { he: "פגישת היכרות ומיפוי המסלולים הרלוונטיים לעסק שלכם – ללא עלות וללא התחייבות.", en: "Intro meeting and mapping of relevant tracks — free of charge, no obligation.", ar: "اجتماع تعارف وتحديد المسارات المناسبة – مجانا ودون التزام.", ru: "Встреча и подбор программ — бесплатно и без обязательств." },
+    step_fin_2_title: { he: "הכנת התיק", en: "File Preparation", ar: "إعداد الملف", ru: "Подготовка досье" },
+    step_fin_2_desc: { he: "כתיבת תיק בקשה / תוכנית עסקית, בניית תקציב ואבני דרך והכנת כל המסמכים הנלווים.", en: "Application/business plan writing, budget and milestones, all supporting documents.", ar: "كتابة ملف الطلب وخطة العمل والميزانية والمستندات.", ru: "Подготовка заявки, бизнес-плана, бюджета и всех документов." },
+    step_fin_3_title: { he: "הגשה וליווי", en: "Submission & Support", ar: "التقديم والمرافقة", ru: "Подача и сопровождение" },
+    step_fin_3_desc: { he: "הגשה רשמית, מענה לבקשות הבהרה של הבודקים וניהול השיח מול הגוף המממן.", en: "Official submission, responses to reviewer queries, and dialogue with the funder.", ar: "تقديم رسمي والرد على استفسارات المراجعين وإدارة الحوار.", ru: "Официальная подача, ответы рецензентам и диалог с фондом." },
+    step_fin_4_title: { he: "קבלת הכספים", en: "Receiving Funds", ar: "استلام الأموال", ru: "Получение средств" },
+    step_fin_4_desc: { he: "ליווי באישור, משיכת התשלומים והגשת דוחות תקופתיים לאורך תקופת המענק/ההלוואה.", en: "Support through approval, drawdowns, and periodic reporting across the grant/loan period.", ar: "مرافقة في الموافقة وسحب الدفعات والتقارير الدورية.", ru: "Сопровождение утверждения, траншей и отчётности." },
+
+    // ===== Reports Panel =====
+    svc_rep_1_title: { he: "ביקורת ועריכת דוחות כספיים", en: "Audit & Financial Statements", ar: "التدقيق وإعداد البيانات المالية", ru: "Аудит и фин. отчётность" },
+    svc_rep_1_desc: { he: "ביקורת, סקירה ועריכה לפי תקינה ישראלית, IFRS ו-US GAAP, כולל בחינת בקרות פנימיות.", en: "Audit, review, and compilation under Israeli standards, IFRS, and US GAAP — including internal controls review.", ar: "تدقيق ومراجعة وإعداد وفقاً للمعايير الإسرائيلية وIFRS وUS GAAP.", ru: "Аудит, обзор и компиляция по израильским стандартам, IFRS и US GAAP." },
+    svc_rep_2_title: { he: "דוחות שנתיים", en: "Annual Reports", ar: "التقارير السنوية", ru: "Годовые отчёты" },
+    svc_rep_2_desc: { he: "הכנה והגשה של דוחות שנתיים ליחידים, עצמאים וחברות. טיפול End-to-End מול רשויות המס.", en: "Preparation and filing of annual reports for individuals, self-employed, and companies — end-to-end handling with tax authorities.", ar: "إعداد وتقديم التقارير السنوية للأفراد والعاملين لحسابهم والشركات.", ru: "Подготовка и подача годовых отчётов — для физлиц, ИП и компаний." },
+    det_rep_title: { he: "דוחות כספיים שאפשר לסמוך עליהם", en: "Financial Reports You Can Rely On", ar: "تقارير مالية يمكنك الاعتماد عليها", ru: "Отчётность, на которую можно положиться" },
+    det_rep_sub: { he: "ביקורת ועריכה בתקינה הבינלאומית והישראלית – לבעלי מניות, בנקים, משקיעים ורגולטורים, עם שקיפות ואובייקטיביות מלאה.", en: "Audit and preparation under international and Israeli standards — for shareholders, banks, investors, and regulators, with full transparency and objectivity.", ar: "تدقيق وإعداد وفق المعايير الدولية والإسرائيلية للمساهمين والبنوك والمستثمرين.", ru: "Аудит и подготовка по международным и израильским стандартам — для акционеров, банков, инвесторов и регуляторов." },
+    trust_rep_1: { he: "ביקורת לפי תקני ISA/IFRS", en: "Audit per ISA/IFRS standards", ar: "تدقيق وفق ISA/IFRS", ru: "Аудит по ISA/IFRS" },
+    trust_rep_2: { he: "US GAAP לחברות בינלאומיות", en: "US GAAP for international companies", ar: "US GAAP للشركات الدولية", ru: "US GAAP для международных компаний" },
+    trust_rep_3: { he: "אובייקטיביות ועצמאות מלאה", en: "Full objectivity & independence", ar: "موضوعية واستقلالية كاملة", ru: "Полная объективность и независимость" },
+    trust_rep_4: { he: "הגשה בזמן, בלי עיכובים", en: "On-time filing, no delays", ar: "تقديم في الوقت دون تأخير", ru: "Сдача в срок, без задержек" },
+    step_rep_1_title: { he: "תכנון הביקורת", en: "Audit Planning", ar: "تخطيط التدقيق", ru: "Планирование аудита" },
+    step_rep_1_desc: { he: "הבנת העסק, הערכת סיכוני ביקורת ובניית תוכנית עבודה מותאמת לאופי הפעילות ולדרישות הרגולטוריות.", en: "Understanding the business, audit risk assessment, and tailored work plan for activity and regulation.", ar: "فهم العمل وتقييم مخاطر التدقيق وخطة عمل مخصصة.", ru: "Понимание бизнеса, оценка рисков и план аудита." },
+    step_rep_2_title: { he: "ביצוע ובקרות", en: "Execution & Controls", ar: "التنفيذ والضوابط", ru: "Выполнение и контроль" },
+    step_rep_2_desc: { he: "בחינת בקרות פנימיות, ביצוע נהלי ביקורת שוטפים ומעמיקים ודגימה מפורטת של תנועות מהותיות.", en: "Internal-control testing, substantive procedures, and detailed sampling of material transactions.", ar: "اختبار الضوابط الداخلية وإجراءات التدقيق والعينات التفصيلية.", ru: "Тестирование контролей, процедуры по существу и выборка существенных операций." },
+    step_rep_3_title: { he: "הכנת הדוחות", en: "Report Preparation", ar: "إعداد التقارير", ru: "Подготовка отчётов" },
+    step_rep_3_desc: { he: "עריכת דוחות כספיים מלאים כולל ביאורים בעברית/אנגלית, התאמות IFRS/US GAAP וטיוטה להנהלה.", en: "Full financial statements with notes in Hebrew/English, IFRS/US GAAP reconciliations, and management draft.", ar: "إعداد بيانات مالية كاملة بالعربية والعبرية والإنجليزية وتسويات IFRS.", ru: "Полная отчётность с пояснениями на иврите/английском, сверки IFRS/US GAAP." },
+    step_rep_4_title: { he: "חתימה והגשה", en: "Signature & Filing", ar: "التوقيع والتقديم", ru: "Подпись и подача" },
+    step_rep_4_desc: { he: "חוות דעת מבקר חתומה והגשת הדוחות לרשויות (רשם חברות, מס הכנסה, בורסה) או לבעלי עניין נוספים.", en: "Signed auditor's opinion and filing with authorities (Registrar of Companies, ITA, stock exchange) or stakeholders.", ar: "رأي المدقق الموقع وتقديم التقارير إلى السلطات.", ru: "Подписанное заключение и подача в органы (Регистратор, налоговая, биржа)." },
+
+    // ===== FAQ (11 questions) =====
+    faqnew_1_q: { he: "איך מתחילים לעבוד אתכם?", en: "How do we start working together?", ar: "كيف نبدأ العمل معكم؟", ru: "Как начать работу с вами?" },
+    faqnew_1_a: { he: "פשוט מאוד – התקשרו אלינו ל-04-8416105, שלחו הודעה בוואטסאפ או מלאו את טופס הפנייה באתר. נתאם פגישת היכרות ראשונית ללא עלות וללא התחייבות, נבין את הצרכים שלכם ונציע את הפתרון המתאים ביותר – כולל הצעת מחיר שקופה עם כל העלויות מראש.", en: "Very simple — call us at 04-8416105, send a WhatsApp message, or fill the contact form. We'll schedule an initial meeting at no cost or obligation, understand your needs, and suggest the best solution — with transparent pricing upfront.", ar: "بسيط جدًا – اتصل بنا على 04-8416105 أو أرسل رسالة واتساب أو املأ نموذج الاتصال. سنحدد موعد اجتماع تعارف مجاني ودون التزام.", ru: "Всё просто — позвоните 04-8416105, напишите в WhatsApp или заполните форму. Назначим бесплатную встречу без обязательств и предложим решение с прозрачной ценой." },
+    faqnew_2_q: { he: "מה ההבדל בין עוסק פטור לעוסק מורשה, ומתי כדאי לפתוח חברה בע\"מ?", en: "Exempt dealer vs. authorized dealer — and when to open a limited company?", ar: "ما الفرق بين التاجر المعفي والمعتمد، ومتى تفتح شركة محدودة؟", ru: "ИП без НДС или с НДС — и когда открывать ООО?" },
+    faqnew_2_a: { he: "עוסק פטור הוא בעל עסק שמחזורו השנתי נמוך מהתקרה הקבועה בחוק ופטור מגביית מע\"מ. עוסק מורשה חייב במע\"מ אך יכול לקזז מע\"מ תשומות. חברה בע\"מ מספקת הגנה משפטית, יתרונות מס בהיקפי הכנסה גבוהים ואפשרויות צבירת הון – אך כרוכה בעלויות ניהול גבוהות יותר. נבחן את היקף ההכנסות, רמת הסיכון והתכנון לטווח ארוך, ונמליץ על המבנה המיטבי.", en: "An exempt dealer has annual revenue below the statutory threshold and is exempt from VAT collection. An authorized dealer must charge VAT but can offset input VAT. A limited company offers legal protection, tax benefits at higher income levels, and capital accumulation — but has higher administrative costs. We'll review your revenue, risk level, and long-term plans and recommend the best structure.", ar: "التاجر المعفى له إيرادات سنوية أقل من العتبة القانونية ومعفى من ضريبة القيمة المضافة. التاجر المعتمد يتقاضى الضريبة ويمكنه خصم ضريبة المدخلات. الشركة المحدودة توفر حماية قانونية ومزايا ضريبية.", ru: "«Освобождённый» имеет оборот ниже порога и без НДС. «Авторизованный» — с НДС, но может вычитать входящий. ООО даёт юр. защиту и налоговые преимущества при высоких доходах, но дороже в обслуживании." },
+    faqnew_3_q: { he: "כמה עולה שירות הנהלת חשבונות חודשי?", en: "How much does monthly bookkeeping cost?", ar: "كم تكلفة مسك الدفاتر الشهري؟", ru: "Сколько стоит ежемесячная бухгалтерия?" },
+    faqnew_3_a: { he: "העלות משתנה לפי היקף העסק, מספר התנועות החודשיות וסוג השירות הנדרש. אנו מציעים חבילות מותאמות לעסקים בכל הגדלים – מעסק קטן עד חברות בינוניות. צרו קשר לקבלת הצעת מחיר אישית, ללא התחייבות.", en: "Cost depends on business size, monthly transactions, and required services. We offer packages for all sizes — from small businesses to mid-sized companies. Contact us for a personalized quote, no obligation.", ar: "تعتمد التكلفة على حجم العمل وعدد المعاملات الشهرية ونوع الخدمة. نقدم باقات لجميع الأحجام.", ru: "Стоимость зависит от размера бизнеса, числа операций и типа услуги. Есть пакеты для всех размеров — от микро до средних компаний." },
+    faqnew_4_q: { he: "מתי צריך להגיש דוח שנתי ומה כלול בביקורת?", en: "When is the annual report due, and what does the audit include?", ar: "متى يُقدم التقرير السنوي وما الذي يشمله التدقيق؟", ru: "Когда сдавать годовой отчёт и что входит в аудит?" },
+    faqnew_4_a: { he: "המועד ליחידים הוא בדרך כלל 30 באפריל (עם אפשרות ארכה דרך רואה חשבון), ולחברות – חמישה חודשים מתום שנת המס. שירות ביקורת כולל Audit, Review או Compilation בהתאם לתקינה הישראלית, IFRS או US GAAP – כולל בחינת בקרות פנימיות, חוות דעת מקצועית והגשה לרשויות.", en: "For individuals, typically April 30 (extensions available via CPA). For companies — five months after tax year-end. Audit services include Audit, Review, or Compilation under Israeli standards, IFRS, or US GAAP — including internal controls review, professional opinion, and filing.", ar: "موعد الأفراد عادةً 30 أبريل (مع تمديد ممكن عبر المحاسب)، والشركات خمسة أشهر بعد انتهاء السنة الضريبية.", ru: "Для физлиц обычно до 30 апреля (возможно продление), для компаний — 5 месяцев после окончания налогового года. Аудит — по израильским стандартам, IFRS или US GAAP." },
+    faqnew_5_q: { he: "האם אתם מטפלים גם בעולים חדשים ובתושבים חוזרים?", en: "Do you also handle new immigrants and returning residents?", ar: "هل تتعاملون أيضًا مع المهاجرين الجدد والعائدين؟", ru: "Работаете ли с новыми репатриантами и возвращающимися жителями?" },
+    faqnew_5_a: { he: "בהחלט. אנחנו מתמחים בליווי עולים חדשים ותושבים חוזרים – ייעוץ לגבי הטבות המס המגיעות (פטור עשר שנים, הכרה בהכנסות חו\"ל), תכנון מס בינלאומי, דיווחים לרשויות אמריקאיות (IRS) וכל ההיבטים הפיננסיים של המעבר לישראל.", en: "Absolutely. We specialize in new-immigrant and returning-resident support — tax benefit advice (10-year exemption, foreign income recognition), international tax planning, US IRS reporting, and all financial aspects of relocating to Israel.", ar: "بالتأكيد. نتخصص في دعم المهاجرين الجدد والعائدين – الاستشارات الضريبية والتخطيط الدولي.", ru: "Безусловно. Специализируемся на сопровождении новых репатриантов и вернувшихся — льготы, международное планирование, отчётность IRS." },
+    faqnew_6_q: { he: "מה זה רווחים כלואים ומתי כדאי לבצע בדיקה?", en: "What are trapped profits, and when should a review be done?", ar: "ما هي الأرباح المحتجزة ومتى يجب الفحص؟", ru: "Что такое запертая прибыль и когда нужен аудит?" },
+    faqnew_6_a: { he: "רווחים כלואים הם רווחים שהחברה צברה ולא חולקו כדיבידנד. מחוק הרווחים הכלואים שנכנס לתוקף ב-1/1/2025, חברות עם עד 5 בעלי מניות חייבות במס שנתי של 2% על \"יתרת רווחים עודפים\", אלא אם מחלקות דיבידנד מינימלי (5% ב-2025, 6% מ-2026). קיימים מסלולי פטור רב-שנתיים לפי שיעור חלוקה (35%-90%). מומלץ לבצע בדיקה עכשיו – ככל שמתחילים מוקדם יותר, החיסכון גדול יותר.", en: "Trapped profits are earnings accumulated by a company and not distributed as dividends. Under the Trapped Profits Law effective 1/1/2025, companies with up to 5 shareholders owe an annual 2% tax on \"excess retained earnings\" unless they distribute a minimum dividend (5% in 2025, 6% from 2026). Multi-year exemption tracks exist based on distribution rate (35%-90%). It's advisable to review now — earlier action means greater savings.", ar: "الأرباح المحتجزة هي أرباح تراكمت ولم توزع. بموجب قانون 2025، الشركات حتى 5 مساهمين تدفع 2% سنويًا ما لم توزع حدًا أدنى.", ru: "Запертая прибыль — это накопленная и не распределённая прибыль. По закону с 1/1/2025 компании до 5 акционеров платят 2% годовых, если не распределяют минимум (5% в 2025, 6% с 2026)." },
+    faqnew_7_q: { he: "האם אני זכאי למענק מרשות החדשנות, ומה אחוזי ההצלחה שלכם?", en: "Am I eligible for an Innovation Authority grant, and what's your success rate?", ar: "هل أنا مؤهل لمنحة سلطة الابتكار وما نسبة نجاحكم؟", ru: "Имею ли право на грант Управления инноваций и каков ваш процент успеха?" },
+    faqnew_7_a: { he: "הזכאות נבחנת לפי סוג הפעילות, מרכיב החדשנות הטכנולוגית ומאפייני החברה – קיימים מסלולים מותאמים לסטארטאפים בתחילת הדרך ועד חברות בוגרות. אחוזי ההצלחה שלנו גבוהים משמעותית מהממוצע, מכיוון שאנחנו מבצעים אבחון זכאות מקדים ולא מגישים בקשות שאין להן סיכוי אמיתי – ומתאימים את התיק בדיוק לקריטריונים של המסלול.", en: "Eligibility depends on activity type, technological innovation component, and company profile — there are tracks for early-stage startups through mature companies. Our success rate is significantly above average because we conduct pre-screening and don't submit applications without real potential — and we tailor each file precisely to the track's criteria.", ar: "تعتمد الأهلية على نوع النشاط ومكون الابتكار التكنولوجي وملف الشركة – ثمة مسارات من الناشئة إلى الناضجة.", ru: "Право зависит от типа деятельности, компонента инноваций и профиля компании — есть программы от ранних стартапов до зрелых компаний. Процент успеха выше среднего благодаря предварительному отбору." },
+    faqnew_8_q: { he: "האם התשלום שלכם מותנה בקבלת המענק או ההלוואה?", en: "Is your payment contingent on receiving the grant or loan?", ar: "هل الدفع لكم مشروط باستلام المنحة أو القرض؟", ru: "Оплата зависит от получения гранта/займа?" },
+    faqnew_8_a: { he: "מודל העבודה נקבע לפי סוג התיק, המסלול והיקף העבודה. בחלק מהתיקים נעבוד במודל שכולל רכיב הצלחה שמותנה בקבלת המענק או ההלוואה בפועל, ובחלק אחר – במודל שכר טרחה קבוע. בכל מקרה אנחנו שקופים לגבי העלויות כבר בפגישת ההיכרות, לפני שאתם מחויבים במשהו.", en: "The model depends on case type, track, and scope. In some cases we work on a success-fee model contingent on actually receiving the grant or loan; in others, a fixed fee. Either way, we're transparent about costs from the intro meeting — before you commit to anything.", ar: "يعتمد النموذج على نوع الحالة والمسار والنطاق. في بعض الحالات نعمل وفق رسم نجاح مشروط.", ru: "Модель зависит от кейса и программы. Иногда — success-fee, зависящий от получения, иногда — фикс. В любом случае прозрачность цен сразу на вводной встрече." },
+    faqnew_9_q: { he: "כמה זמן לוקח תהליך קבלת הלוואה בערבות מדינה?", en: "How long does the state-guaranteed loan process take?", ar: "كم يستغرق الحصول على قرض بضمان الدولة؟", ru: "Сколько длится процесс получения займа под госгарантию?" },
+    faqnew_9_a: { he: "התהליך אורך בדרך כלל 4 עד 8 שבועות מרגע הגשת הבקשה, בהתאם למורכבות התיק, זמינות המסמכים ומהירות הבנק. אנחנו מכינים תיק מלא ומסודר עוד לפני ההגשה, מה שמקצר משמעותית את התהליך ומגדיל את סיכויי האישור.", en: "The process typically takes 4 to 8 weeks from submission, depending on case complexity, document availability, and bank speed. We prepare a complete, organized file before submission — significantly shortening the process and improving approval odds.", ar: "عادةً من 4 إلى 8 أسابيع بعد التقديم، حسب تعقيد الملف وسرعة البنك.", ru: "Обычно 4–8 недель с момента подачи, в зависимости от сложности и скорости банка. Подготовленный заранее пакет сильно ускоряет процесс." },
+    faqnew_10_q: { he: "האם AI באמת מתאים לעסק שלי?", en: "Is AI really a fit for my business?", ar: "هل الذكاء الاصطناعي مناسب لعملي فعلاً؟", ru: "Действительно ли AI подходит моему бизнесу?" },
+    faqnew_10_a: { he: "כן – אבל לא בכל תהליך. הערך של AI נובע מזיהוי נכון של תהליכים חוזרניים, מתישים או מבוססי טקסט/נתונים שניתן לאוטומטי. אנחנו ממפים את העסק שלכם, מזהים את 2-3 המקומות עם ה-ROI הגבוה ביותר ומיישמים שם פתרון ספציפי – לא \"מהפכת AI\" רוחבית. זה יכול להיות מענה אוטומטי ללקוחות, סיכום פגישות, הפקת דוחות או עוזר אישי מבוסס מסמכי החברה.", en: "Yes — but not in every process. AI value comes from correctly identifying repetitive, exhausting, or text/data-based processes that can be automated. We map your business, identify the 2-3 highest-ROI spots, and implement a specific solution there — not a sweeping \"AI revolution.\" It could be customer auto-reply, meeting summaries, report generation, or a personal assistant based on company documents.", ar: "نعم – لكن ليس في كل عملية. القيمة تأتي من تحديد العمليات المتكررة أو المبنية على النص/البيانات.", ru: "Да — но не в каждом процессе. Ценность AI в правильном выборе повторяющихся или текстовых/данных процессов. Мы находим 2–3 точки с максимальным ROI и внедряем конкретное решение." },
+    faqnew_11_q: { he: "למה כדאי לעבוד עם משרד רו\"ח ולא יועץ מס עצמאי?", en: "Why work with a CPA firm rather than a solo tax advisor?", ar: "لماذا العمل مع مكتب محاسبة بدلاً من مستشار ضرائب مستقل؟", ru: "Почему CPA-фирма, а не частный налоговый консультант?" },
+    faqnew_11_a: { he: "ליווי של משרד רו\"ח מעניק לכם מעטפת רחבה של יכולות תחת קורת גג אחת – הנהלת חשבונות, שכר, מס, דוחות כספיים חתומים, ביקורת, מענקים והלוואות. במקום לעבוד מול שלושה-ארבעה גורמים שלא מדברים בינם לבין עצמם, מקבלים שותף אחד שרואה את כל התמונה – החיסכון בזמן והיכולת לתכנן אסטרטגית שווים הרבה יותר מהעלות.", en: "A CPA firm gives you a wide envelope of capabilities under one roof — bookkeeping, payroll, tax, signed financials, audit, grants, and loans. Instead of juggling three or four parties who don't talk to each other, you get one partner who sees the whole picture — the time saved and strategic planning capability are worth far more than the cost.", ar: "يوفر مكتب المحاسبة مظلة شاملة – مسك دفاتر ورواتب وضرائب وتدقيق ومنح – بدلاً من التعامل مع ثلاث أو أربع جهات.", ru: "CPA-фирма даёт полный охват — бухгалтерия, зарплата, налоги, подписанная отчётность, аудит, гранты и займы — под одной крышей. Один партнёр видит всю картину." },
 
     // ===== Language Picker =====
     lang_he: { he: "עברית", en: "עברית", ar: "عبرية", ru: "Иврит" },
