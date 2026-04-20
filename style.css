@@ -2088,6 +2088,57 @@ button {
     color: rgba(255, 255, 255, 0.4);
 }
 
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-legal {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-sm) 0 0;
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-legal li {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.footer-legal li + li::before {
+    content: "•";
+    color: rgba(255, 255, 255, 0.3);
+    margin-inline-end: var(--space-lg);
+    position: absolute;
+    right: calc(var(--space-lg) * -1 + 2px);
+}
+
+[dir="ltr"] .footer-legal li + li::before {
+    right: auto;
+    left: calc(var(--space-lg) * -1 + 2px);
+}
+
+.footer-legal a,
+.footer-legal .cc-footer-link {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.6);
+    transition: color var(--transition-fast);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-body);
+    text-decoration: none;
+}
+
+.footer-legal a:hover,
+.footer-legal .cc-footer-link:hover {
+    color: var(--color-accent);
+}
+
 /* ===== כפתור חזרה למעלה ===== */
 .back-to-top {
     position: fixed;
