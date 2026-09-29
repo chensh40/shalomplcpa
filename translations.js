@@ -524,7 +524,7 @@ const translations = {
         he: "הנהלת חשבונות", en: "Bookkeeping", ar: "إدارة الحسابات", ru: "Бухгалтерский учёт"
     },
     form_subject_o2: {
-        he: "ביקורת דוחות כספיים", en: "Financial Auditing", ar: "تدقيق البيانات المالية", ru: "Аудит"
+        he: "ביקורת ועריכת דוחות כספיים", en: "Financial Auditing", ar: "تدقيق البيانات المالية", ru: "Аудит"
     },
     form_subject_o3: {
         he: "ייעוץ מס", en: "Tax Consulting", ar: "استشارات ضريبية", ru: "Налоговое консультирование"
@@ -546,6 +546,18 @@ const translations = {
     },
     form_subject_o9: {
         he: "אחר", en: "Other", ar: "أخرى", ru: "Другое"
+    },
+    form_subject_grants: {
+        he: "ייעוץ בנושא מענקים", en: "Grants Consulting", ar: "استشارات المنح", ru: "Консультации по грантам"
+    },
+    form_subject_loans: {
+        he: "הלוואה בערבות מדינה", en: "State-Guaranteed Loan", ar: "قرض بضمان الدولة", ru: "Заём под госгарантию"
+    },
+    form_subject_trapped: {
+        he: "בדיקת רווחים כלואים", en: "Trapped Profits Audit", ar: "فحص الأرباح المحتجزة", ru: "Аудит запертой прибыли"
+    },
+    form_subject_ai: {
+        he: "ליווי והטמעת AI לעסק", en: "AI Integration for Business", ar: "دمج الذكاء الاصطناعي للأعمال", ru: "Внедрение AI в бизнес"
     },
     form_subject_shevach: {
         he: "פריסת מס שבח", en: "Real Estate Capital Gains Tax Spreading (Mas Shevach)", ar: "توزيع ضريبة التحسين العقاري (مَس شِفَح)", ru: "Распределение налога на прирост стоимости недвижимости (мас шевах)"

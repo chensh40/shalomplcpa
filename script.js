@@ -183,17 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nameInput && translations.form_name_ph) nameInput.placeholder = translations.form_name_ph[lang];
         if (messageInput && translations.form_message_ph) messageInput.placeholder = translations.form_message_ph[lang];
 
-        // Select options
-        const subjectSelect = document.getElementById('subject');
-        if (subjectSelect) {
-            const optionKeys = ['form_subject_ph', 'form_subject_o1', 'form_subject_o2', 'form_subject_o3', 'form_subject_o4', 'form_subject_o5', 'form_subject_o6', 'form_subject_o7', 'form_subject_o8', 'form_subject_o9'];
-            subjectSelect.querySelectorAll('option').forEach((opt, i) => {
-                if (optionKeys[i] && translations[optionKeys[i]]) {
-                    opt.textContent = translations[optionKeys[i]][lang];
-                }
-            });
-        }
-
         // Footer copyright
         const copyright = document.querySelector('.footer-bottom p');
         if (copyright && translations.footer_copyright) {
