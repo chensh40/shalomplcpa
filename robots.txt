@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.shalomplcpa.com/sitemap.xml
+Sitemap: https://shalompl-cpa.com/sitemap.xml
