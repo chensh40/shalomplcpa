@@ -1814,10 +1814,6 @@ button {
     transition: max-height var(--transition-slow), padding var(--transition-slow);
 }
 
-.faq-item.active .faq-answer {
-    max-height: 300px;
-}
-
 .faq-answer p {
     padding: 0 var(--space-xl) var(--space-lg);
     font-size: var(--text-base);

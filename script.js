@@ -517,6 +517,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== FAQ Accordion =====
     const faqItems = document.querySelectorAll('.faq-item');
 
+    // גובה התשובה נקבע לפי התוכן בפועל (scrollHeight) – אין חיתוך בטקסט ארוך
+    const setFaqHeight = (item) => {
+        const answer = item.querySelector('.faq-answer');
+        answer.style.maxHeight = item.classList.contains('active') ? answer.scrollHeight + 'px' : '';
+    };
+
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         question.addEventListener('click', () => {
@@ -526,15 +532,28 @@ document.addEventListener('DOMContentLoaded', () => {
             faqItems.forEach(i => {
                 i.classList.remove('active');
                 i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                setFaqHeight(i);
             });
 
             // פתיחה/סגירה של הנוכחית
             if (!isActive) {
                 item.classList.add('active');
                 question.setAttribute('aria-expanded', 'true');
+                setFaqHeight(item);
             }
         });
     });
+
+    // עדכון הגובה של תשובה פתוחה כשהתוכן משתנה (החלפת שפה, שינוי רוחב מסך)
+    if ('ResizeObserver' in window) {
+        const faqObserver = new ResizeObserver(entries => {
+            entries.forEach(entry => {
+                const item = entry.target.closest('.faq-item');
+                if (item.classList.contains('active')) setFaqHeight(item);
+            });
+        });
+        document.querySelectorAll('.faq-answer p').forEach(p => faqObserver.observe(p));
+    }
 
     // ===== טופס צור קשר - ולידציה =====
     const contactForm = document.getElementById('contactForm');
