@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Footer copyright
         const copyright = document.querySelector('.footer-bottom p');
         if (copyright && translations.footer_copyright) {
-            copyright.innerHTML = `&copy; 2024 ${translations.footer_copyright[lang]}`;
+            copyright.innerHTML = `&copy; 1993–${new Date().getFullYear()} ${translations.footer_copyright[lang]}`;
         }
 
         // Title
@@ -453,6 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== אנימציית ספירת מספרים =====
     const statNumbers = document.querySelectorAll('.stat-number');
+    // המספרים האמיתיים כתובים ב-HTML (עבור מנועי חיפוש ו-AI); האנימציה מתחילה מ-0 רק בדפדפן
+    statNumbers.forEach(num => { num.textContent = '0'; });
     let statsAnimated = false;
 
     const animateCounters = () => {
