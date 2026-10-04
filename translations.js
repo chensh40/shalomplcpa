@@ -502,6 +502,12 @@ const translations = {
     contact_hours: {
         he: "א'-ה' 08:00-18:00", en: "Sun-Thu 08:00-18:00", ar: "الأحد-الخميس 08:00-18:00", ru: "Вс-Чт 08:00-18:00"
     },
+    contact_meeting_label: {
+        he: "פגישת היכרות ללא עלות", en: "Free Introductory Meeting", ar: "اجتماع تعارف مجاني", ru: "Бесплатная ознакомительная встреча"
+    },
+    contact_meeting: {
+        he: "במשרד או מקוונת. הצעת המחיר נקבעת לאחר הפגישה, בהתאם לצרכים. מענה מהיר לכל פנייה.", en: "At our office or online. Pricing is set after the meeting, based on your needs. Fast response to every inquiry.", ar: "في المكتب أو عبر الإنترنت. يتم تحديد السعر بعد الاجتماع وفقاً للاحتياجات. رد سريع على كل استفسار.", ru: "В офисе или онлайн. Стоимость определяется после встречи, исходя из ваших потребностей. Быстрый ответ на каждое обращение."
+    },
     form_name: {
         he: "שם מלא *", en: "Full Name *", ar: "الاسم الكامل *", ru: "Полное имя *"
     },
