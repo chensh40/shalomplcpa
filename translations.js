@@ -502,6 +502,18 @@ const translations = {
     contact_hours: {
         he: "א'-ה' 08:00-18:00", en: "Sun-Thu 08:00-18:00", ar: "الأحد-الخميس 08:00-18:00", ru: "Вс-Чт 08:00-18:00"
     },
+    contact_meeting_label: {
+        he: "פגישת ייעוץ ראשונה", en: "Initial Consultation", ar: "استشارة أولى", ru: "Первичная консультация"
+    },
+    contact_meeting: {
+        he: "פגישה ראשונה ללא עלות, במשרדנו או בשיחת וידאו, להיכרות ולהבנת צרכיכם. בסיומה תקבלו הצעת שכר טרחה מותאמת.", en: "A complimentary first meeting, at our office or by video call, to get to know you and understand your needs. Afterwards you will receive a tailored fee proposal.", ar: "اجتماع أول مجاني، في مكتبنا أو عبر مكالمة فيديو، للتعارف وفهم احتياجاتكم. في نهايته تحصلون على عرض أتعاب مخصص.", ru: "Первая встреча бесплатно — в нашем офисе или по видеосвязи, чтобы познакомиться и понять ваши потребности. По итогам вы получите индивидуальное предложение по стоимости услуг."
+    },
+    contact_lang_label: {
+        he: "שפות שירות", en: "Service Languages", ar: "لغات الخدمة", ru: "Языки обслуживания"
+    },
+    contact_lang: {
+        he: "עברית, אנגלית, רוסית וערבית", en: "Hebrew, English, Russian and Arabic", ar: "العبرية، الإنجليزية، الروسية والعربية", ru: "Иврит, английский, русский и арабский"
+    },
     form_name: {
         he: "שם מלא *", en: "Full Name *", ar: "الاسم الكامل *", ru: "Полное имя *"
     },
@@ -833,7 +845,7 @@ const translations = {
     det_tax_title: { he: "תכנון מס שמחזיר את עצמו – ואת החלטות העסק", en: "Tax Planning That Pays for Itself", ar: "تخطيط ضريبي يدفع ثمن نفسه", ru: "Налоговое планирование, которое окупается" },
     det_tax_sub: { he: "מבט רחב על כל מרחב המיסוי – מס הכנסה, מע\"מ, ביטוח לאומי, מיסוי מקרקעין, IRS והרפורמה של הרווחים הכלואים – כדי לזהות איפה אתם משלמים יותר מהנדרש.", en: "A wide view across income tax, VAT, National Insurance, real estate taxation, IRS, and the Trapped Profits reform — to identify where you're overpaying.", ar: "نظرة شاملة على ضريبة الدخل وضريبة القيمة المضافة والتأمين الوطني وضريبة العقارات وIRS لتحديد مواطن الدفع الزائد.", ru: "Широкий взгляд на подоходный, НДС, соц. страхование, налогообложение недвижимости, IRS и реформу запертой прибыли — чтобы найти переплаты." },
     trust_tax_1: { he: "מומחיות בישראל ובחו\"ל (IRS)", en: "Expertise in Israel & abroad (IRS)", ar: "خبرة في إسرائيل والخارج (IRS)", ru: "Экспертиза в Израиле и за рубежом (IRS)" },
-    trust_tax_2: { he: "עדכון שוטף לרפורמות 2025", en: "Current on 2025 reforms", ar: "محدثون بإصلاحات 2025", ru: "В курсе реформ 2025" },
+    trust_tax_2: { he: "עדכון שוטף לחקיקה 2025–2026", en: "Up to date on 2025–2026 legislation", ar: "محدثون بتشريعات 2025–2026", ru: "В курсе законодательства 2025–2026" },
     trust_tax_3: { he: "תכנון רב-שנתי (לא רגעי)", en: "Multi-year planning (not ad-hoc)", ar: "تخطيط متعدد السنوات", ru: "Многолетнее планирование" },
     trust_tax_4: { he: "אחוזי הצלחה גבוהים בייצוג", en: "High success rate in representation", ar: "نسب نجاح عالية في التمثيل", ru: "Высокий процент успеха" },
     step_tax_1_title: { he: "אבחון מקדים", en: "Initial Diagnosis", ar: "التشخيص الأولي", ru: "Первичная диагностика" },
